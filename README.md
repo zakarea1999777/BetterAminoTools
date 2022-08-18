@@ -1,9 +1,8 @@
 
 [![Chat on Discord](https://img.shields.io/discord/1009602416800444497)](https://discord.gg/cXEJu2CM)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2e411243d41f4fa8abdfd204e41ef773)](https://codacy.com/gh/4med/BetterAmino/dashboard)
-![Commit Activity](https://img.shields.io/github/commit-activity/m/4med/BetterAmino)
-[![Total downloads](https://img.shields.io/github/downloads/4med/BetterAmino/total)](https://github.com/4med/BetterAmino/releases)
-![Repository Size](https://img.shields.io/github/repo-size/4med/BetterAmino)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/BetterAmino/BetterAmino)
+[![Total downloads](https://img.shields.io/github/downloads/BetterAmino/BetterAmino/total)](https://github.com/BetterAmino/BetterAmino/releases)
+![Repository Size](https://img.shields.io/github/repo-size/BetterAmino/BetterAmino)
 
 # Better Amino
 
