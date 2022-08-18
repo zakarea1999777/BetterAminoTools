@@ -4,4 +4,5 @@
     transparent system bars would actually be made translucent by OS.
     -->
     <color name="chrome_transparent_ish">#01000000</color>
+
 </resources>
