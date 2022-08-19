@@ -18,7 +18,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getLayoutInflater();
+        Account account = new Account(this);
+
 
         login_btn = findViewById(R.id.login_btn);
         email = findViewById(R.id.email);
@@ -30,7 +31,7 @@ public class MainActivity extends Activity {
             else if (password.getText().toString().equals(""))
             {password.setError("Password Can't Be Empty");}
             else {
-                Account.Login(this, email.getText().toString(), password.getText().toString());
+                account.Login(email.getText().toString(), password.getText().toString());
             }
         });
     }
