@@ -1,5 +1,5 @@
 
-[![Chat on Discord](https://img.shields.io/discord/1009602416800444497)](https://discord.gg/cXEJu2CM)
+[![Chat on Discord](https://img.shields.io/discord/1009602416800444497)](https://discord.gg/SQUTkdYAna)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2e411243d41f4fa8abdfd204e41ef773)](https://app.codacy.com/gh/BetterAmino/BetterAmino/dashboard)
 ![Commit Activity](https://img.shields.io/github/commit-activity/m/BetterAmino/BetterAmino)
 [![Total downloads](https://img.shields.io/github/downloads/BetterAmino/BetterAmino/total)](https://github.com/BetterAmino/BetterAmino/releases)
