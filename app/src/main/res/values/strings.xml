@@ -8,5 +8,11 @@
     <string name="forget_password">Forget Password?</string>
     <string name="login_with_google">Login With Google</string>
     <string name="login">Login</string>
+    <string name="communities">Communities</string>
+    <string name="profile">Profile</string>
+    <string name="chats">Chats</string>
+    <string name="explore">Explore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

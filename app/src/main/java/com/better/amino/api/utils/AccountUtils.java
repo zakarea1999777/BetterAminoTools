@@ -5,4 +5,6 @@ public class AccountUtils {
     public static String uid = null;
     public static String nickname = null;
     public static String aminoId = null;
+    public static boolean logged = false;
+    public static String icon = null;
 }
