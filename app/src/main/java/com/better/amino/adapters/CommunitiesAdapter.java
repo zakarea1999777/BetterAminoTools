@@ -51,9 +51,10 @@ public class CommunitiesAdapter extends BaseAdapter {
         }
 
         final ImageView icon = (ImageView) convertView.findViewById(R.id.community_icon);
-        
-        try{String url = communityList.get((int) position).get("icon").toString().replace("http", "https");}
-        catch (Exception ignored){icon.setImageResource(R.mipmap.ic_launcher_round);}
+        String url = "";
+
+        try {url = communityList.get((int) position).get("icon").toString().replace("http", "https");}
+        catch (Exception ignored){}
 
         RequestOptions options = new RequestOptions()
                 .centerCrop()
