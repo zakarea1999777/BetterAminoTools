@@ -74,8 +74,12 @@ public class ProfileFragment extends Fragment {
                 .centerCrop()
                 .placeholder(R.mipmap.ic_launcher_round)
                 .error(R.mipmap.ic_launcher_round);
-
-        Glide.with(requireContext()).load(Uri.parse(AccountUtils.icon.replace("http", "https"))).apply(options).into(icon);
+        
+        String url = "";
+        try {url = AccountUtils.icon.replace("http", "https");}
+        catch (Exception ignored) {}
+         
+        Glide.with(requireContext()).load(Uri.parse(url)).apply(options).into(icon);
 
         return view;
     }
