@@ -2,8 +2,10 @@ package com.better.amino.api;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 
+import com.better.amino.activites.HomeActivity;
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.requests.RequestNetwork;
 import com.better.amino.ui.SharedValue;
@@ -11,6 +13,7 @@ import com.better.amino.utils.Utils;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class Account {
@@ -56,8 +59,9 @@ public class Account {
             AccountUtils.sid = "sid=" + map.get("sid").toString();
             AccountUtils.uid = map.get("auid").toString();
             AccountUtils.nickname = ((Map<?, ?>) map.get("account")).get("nickname").toString();
+            AccountUtils.bio = Objects.requireNonNullElse(((Map<?, ?>) map.get("account")).get("content"), "").toString();
             AccountUtils.aminoId = ((Map<?, ?>) map.get("account")).get("aminoId").toString();
-            AccountUtils.icon = ((Map<?, ?>) map.get("userProfile")).get("icon").toString();
+            AccountUtils.icon = Objects.requireNonNullElse(((Map<?, ?>) map.get("userProfile")).get("icon"), "").toString();
             AccountUtils.logged = true;
             SharedValue shared = new SharedValue(context);
             shared.saveString("sid", AccountUtils.sid);
@@ -65,7 +69,9 @@ public class Account {
             shared.saveString("nickname", AccountUtils.nickname);
             shared.saveString("aminoId", AccountUtils.aminoId);
             shared.saveString("icon", AccountUtils.icon);
+            shared.saveString("bio", AccountUtils.bio);
             shared.saveBoolean("logged", AccountUtils.logged);
+            context.startActivity(new Intent(context, HomeActivity.class));
         }
     }
 

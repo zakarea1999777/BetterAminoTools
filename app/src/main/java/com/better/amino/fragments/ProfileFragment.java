@@ -1,5 +1,8 @@
 package com.better.amino.fragments;
 
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -10,17 +13,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.better.amino.R;
+import com.better.amino.api.Global;
 import com.better.amino.api.utils.AccountUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.button.MaterialButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfileFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ProfileFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -33,6 +35,11 @@ public class ProfileFragment extends Fragment {
     private String mParam2;
 
     CircleImageView icon;
+    TextInputEditText nickname;
+    TextInputEditText bio;
+    MaterialButton set;
+    CircleImageView camera;
+
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -59,6 +66,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -69,17 +77,28 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container,false);
         icon = view.findViewById(R.id.profile_icon);
+        nickname = view.findViewById(R.id.nickname);
+        bio = view.findViewById(R.id.bio);
+        set = view.findViewById(R.id.set_btn);
+        camera = view.findViewById(R.id.camera_icon);
 
-        RequestOptions options = new RequestOptions()
-                .centerCrop()
-                .placeholder(R.mipmap.ic_launcher_round)
-                .error(R.mipmap.ic_launcher_round);
+        RequestOptions options = new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round).error(R.mipmap.ic_launcher_round);
         
         String url = "";
+
         try {url = AccountUtils.icon.replace("http", "https");}
         catch (Exception ignored) {}
          
         Glide.with(requireContext()).load(Uri.parse(url)).apply(options).into(icon);
+
+        nickname.setText(AccountUtils.nickname);
+        bio.setText(AccountUtils.bio);
+
+        set.setOnClickListener(vie -> {
+            new Global(requireActivity()).EditProfile(nickname.getText().toString(), bio.getText().toString());
+            icon.setBorderColor(Color.parseColor("#4BB543"));
+            camera.setBorderColor(Color.parseColor("#4BB543"));
+        });
 
         return view;
     }

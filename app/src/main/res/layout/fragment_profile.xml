@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    tools:context=".fragments.ProfileFragment"
+    android:background="#000000">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -20,7 +21,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profile_icon">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/nickname"
+            android:id="@+id/nicknamelayout"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,6 +32,7 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_icon">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/nickname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
@@ -39,7 +41,7 @@
         </com.google.android.material.textfield.TextInputLayout>
         
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/bio"
+            android:id="@+id/biolayout"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -51,6 +53,7 @@
             app:layout_constraintTop_toBottomOf="@+id/nickname">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/bio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="13sp"
@@ -58,18 +61,16 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/set_btn"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/set"
+            app:cornerRadius="5dp" />
+
     </LinearLayout>
-
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/dash_image"
-        android:layout_width="104dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="58dp"
-        android:background="@drawable/dash_border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_icon"
@@ -77,6 +78,8 @@
         android:layout_height="96dp"
         android:layout_marginTop="62dp"
         android:src="@drawable/kenny_timmer_v_bw_tdto2c_unsplash"
+        app:civ_border_color="@color/white"
+        app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

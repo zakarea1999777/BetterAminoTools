@@ -33,6 +33,7 @@ public class MainActivity extends Activity {
             AccountUtils.aminoId = shared.getString("aminoId");
             AccountUtils.sid = shared.getString("sid");
             AccountUtils.icon = shared.getString("icon");
+            AccountUtils.bio = shared.getString("bio");
 
             startActivity(new Intent(this, HomeActivity.class));
         }
@@ -53,7 +54,6 @@ public class MainActivity extends Activity {
                 account.Login(email.getText().toString(), password.getText().toString());
                 shared.saveString("email", email.getText().toString());
                 shared.saveString("password", password.getText().toString());
-                startActivity(new Intent(this, HomeActivity.class));
             }
         });
     }

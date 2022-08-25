@@ -1,10 +1,11 @@
 package com.better.amino.api.utils;
 
 public class AccountUtils {
-    public static String sid = null;
-    public static String uid = null;
-    public static String nickname = null;
-    public static String aminoId = null;
+    public static String sid = "";
+    public static String uid = "";
+    public static String nickname = "";
+    public static String bio = "";
+    public static String aminoId = "";
+    public static String icon = "";
     public static boolean logged = false;
-    public static String icon = null;
 }

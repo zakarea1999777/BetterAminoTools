@@ -1,8 +1,8 @@
 package com.better.amino.requests;
 
 import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
 
+import java8.util.concurrent.CompletableFuture;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;

@@ -50,16 +50,13 @@ public class CommunitiesAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.communities_item, null);
         }
 
-        final ImageView icon = (ImageView) convertView.findViewById(R.id.community_icon);
+        final ImageView icon = convertView.findViewById(R.id.community_icon);
         String url = "";
 
-        try {url = communityList.get((int) position).get("icon").toString().replace("http", "https");}
+        try {url = communityList.get(position).get("icon").toString().replace("http", "https");}
         catch (Exception ignored){}
 
-        RequestOptions options = new RequestOptions()
-                .centerCrop()
-                .placeholder(R.mipmap.ic_launcher_round)
-                .error(R.mipmap.ic_launcher_round);
+        RequestOptions options = new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round).error(R.mipmap.ic_launcher_round);
 
         Glide.with(context).load(Uri.parse(url)).apply(options).into(icon);
         return convertView;

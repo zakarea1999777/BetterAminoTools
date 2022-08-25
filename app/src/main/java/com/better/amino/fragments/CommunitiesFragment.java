@@ -1,32 +1,19 @@
 package com.better.amino.fragments;
 
-import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.appcompat.widget.ThemedSpinnerAdapter;
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 
+import androidx.fragment.app.Fragment;
+
 import com.better.amino.R;
 import com.better.amino.adapters.CommunitiesAdapter;
 import com.better.amino.api.Community;
 import com.better.amino.databinding.FragmentCommunitiesBinding;
-import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CommunitiesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CommunitiesFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
@@ -81,10 +68,6 @@ public class CommunitiesFragment extends Fragment {
 
         Community community = new Community();
         CommunitiesAdapter communitiesAdapter = new CommunitiesAdapter(requireContext(), community.getCommunities());
-
-        //binding.communityList.setAdapter(communitiesAdapter);
-        //((BaseAdapter) binding.communityList.getAdapter()).notifyDataSetChanged();
-        //binding.communityList.invalidate();
 
         communityView.setAdapter(communitiesAdapter);
         ((BaseAdapter) communityView.getAdapter()).notifyDataSetChanged();

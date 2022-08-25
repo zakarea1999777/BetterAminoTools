@@ -35,6 +35,5 @@ public class HomeActivity extends AppCompatActivity {
             return true;
         });
 
-        SharedValue shared = new SharedValue(this);
     }
 }
