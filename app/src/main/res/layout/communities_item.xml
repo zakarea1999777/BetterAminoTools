@@ -10,8 +10,8 @@
         android:layout_rowWeight="1"
         android:layout_columnWeight="1"
         app:cardCornerRadius="15dp"
-        app:strokeWidth="1dp"
-        app:strokeColor="#eeeeee"
+        app:strokeWidth="2dp"
+        app:strokeColor="#a1a1a1"
         app:cardElevation="0dp">
 
         <ImageView

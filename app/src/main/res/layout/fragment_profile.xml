@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.ProfileFragment">
+    android:layout_height="match_parent">
 
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -24,7 +23,7 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nickname"
+            android:hint="@string/nickname"
             app:startIconContentDescription="hello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +32,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nickname"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
@@ -44,8 +43,8 @@
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Bio"
-            android:layout_marginTop="8dp"
+            android:hint="@string/bio"
+            android:layout_marginTop="@dimen/spacing_small"
             app:startIconContentDescription="hello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -54,20 +53,27 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bio"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textSize="13sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
+        <com.dd.CircularProgressButton
             android:id="@+id/set_btn"
-            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:text="@string/set"
-            app:cornerRadius="5dp" />
+            android:textColor="?colorOnSurface"
+            app:cpb_iconComplete="@drawable/done"
+            app:cpb_iconError="@drawable/failed"
+            app:cpb_textComplete="Completed"
+            app:cpb_textError="Error"
+            app:cpb_textIdle="Set"
+            android:layout_marginTop="@dimen/spacing_small"
+            app:cpb_cornerRadius="3dp"
+            app:cpb_colorIndicator="?colorPrimary"
+            app:cpb_selectorIdle="?colorSecondaryContainer"
+            style="@style/Widget.Material3.Button.TonalButton" />
 
     </LinearLayout>
 
@@ -77,7 +83,7 @@
         android:layout_height="96dp"
         android:layout_marginTop="62dp"
         android:src="@drawable/kenny_timmer_v_bw_tdto2c_unsplash"
-        app:civ_border_color="@color/white"
+        app:civ_border_color="?colorOnSurface"
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -89,7 +95,7 @@
         android:layout_height="30dp"
         android:layout_marginTop="142dp"
         android:src="@drawable/cam"
-        app:civ_border_color="@color/white"
+        app:civ_border_color="?colorOnSecondary"
         app:civ_border_width="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

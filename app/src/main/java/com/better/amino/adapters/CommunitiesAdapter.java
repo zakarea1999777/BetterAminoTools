@@ -11,10 +11,8 @@ import android.widget.ImageView;
 import com.better.amino.R;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class CommunitiesAdapter extends BaseAdapter {

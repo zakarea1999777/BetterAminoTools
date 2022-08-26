@@ -1,7 +1,6 @@
 package com.better.amino.fragments;
 
-import android.app.Activity;
-import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,9 +14,13 @@ import android.view.ViewGroup;
 import com.better.amino.R;
 import com.better.amino.api.Global;
 import com.better.amino.api.utils.AccountUtils;
+import com.better.amino.ui.AnimationManager;
+import com.better.amino.ui.SharedValue;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.dd.CircularProgressButton;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -37,7 +40,7 @@ public class ProfileFragment extends Fragment {
     CircleImageView icon;
     TextInputEditText nickname;
     TextInputEditText bio;
-    MaterialButton set;
+    CircularProgressButton set;
     CircleImageView camera;
 
 
@@ -90,14 +93,15 @@ public class ProfileFragment extends Fragment {
         catch (Exception ignored) {}
          
         Glide.with(requireContext()).load(Uri.parse(url)).apply(options).into(icon);
-
+    
         nickname.setText(AccountUtils.nickname);
         bio.setText(AccountUtils.bio);
+        set.setProgress(0);
 
         set.setOnClickListener(vie -> {
-            new Global(requireActivity()).EditProfile(nickname.getText().toString(), bio.getText().toString());
-            icon.setBorderColor(Color.parseColor("#4BB543"));
-            camera.setBorderColor(Color.parseColor("#4BB543"));
+            set.setProgress(0);
+            if (new Global(requireActivity()).EditProfile(nickname.getText().toString(), bio.getText().toString())){AnimationManager.simulateSuccessProgress(set);}
+            else {AnimationManager.simulateErrorProgress(set);}
         });
 
         return view;

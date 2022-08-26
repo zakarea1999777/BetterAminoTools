@@ -4,6 +4,8 @@ import android.app.Activity;
 
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.requests.RequestNetwork;
+import com.better.amino.ui.SharedValue;
+import com.google.gson.Gson;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +22,7 @@ public class Global {
         this.context = context;
     }
 
-    public void EditProfile(String nickname, String bio){
+    public boolean EditProfile(String nickname, String bio){
         Map<String, Object> data = new HashMap<>();
         data.put("address", null);
         data.put("latitude", 0);
@@ -31,9 +33,16 @@ public class Global {
         data.put("context", bio);
 
         Map<String, Object> map = RequestNetwork.post(context, profile + AccountUtils.uid, data);
+
         if (map != null){
-            AccountUtils.nickname = ((Map<?, ?>) map.get("userProfile")).get("nickname").toString();
-            AccountUtils.bio = Objects.requireNonNullElse(((Map<?, ?>) map.get("userProfile")).get("content"), "").toString();
+            if (map.get("api:message").toString().equals("OK")){
+                AccountUtils.nickname = ((Map<?, ?>) map.get("userProfile")).get("nickname").toString();
+                AccountUtils.bio = Objects.requireNonNullElse(((Map<?, ?>) map.get("userProfile")).get("content"), "").toString();
+                new SharedValue(context).saveString("nickname", nickname);
+                new SharedValue(context).saveString("bio", bio);
+                return true;
+            }
         }
+        return false;
     }
 }
