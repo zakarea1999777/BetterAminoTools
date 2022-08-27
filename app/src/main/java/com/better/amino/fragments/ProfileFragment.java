@@ -1,27 +1,29 @@
 package com.better.amino.fragments;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
 
 import com.better.amino.R;
 import com.better.amino.api.Global;
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.ui.AnimationManager;
-import com.better.amino.ui.SharedValue;
+import com.better.amino.utils.FileUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.dd.CircularProgressButton;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,7 +44,8 @@ public class ProfileFragment extends Fragment {
     TextInputEditText bio;
     CircularProgressButton set;
     CircleImageView camera;
-
+    File image = null;
+    String filepath;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -100,10 +103,36 @@ public class ProfileFragment extends Fragment {
 
         set.setOnClickListener(vie -> {
             set.setProgress(0);
-            if (new Global(requireActivity()).EditProfile(nickname.getText().toString(), bio.getText().toString())){AnimationManager.simulateSuccessProgress(set);}
+            if (new Global(requireActivity()).EditProfile(nickname.getText().toString(), bio.getText().toString(), image)){AnimationManager.simulateSuccessProgress(set);}
             else {AnimationManager.simulateErrorProgress(set);}
         });
 
+        icon.setOnClickListener(vie -> {
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setType("image/*");
+            startActivityForResult(intent, 200);
+        });
+
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 200 && resultCode == Activity.RESULT_OK) {
+            if (data == null) {return;}
+
+            try {
+                InputStream inputStream = requireContext().getContentResolver().openInputStream(data.getData());
+                icon.setImageBitmap(BitmapFactory.decodeStream(inputStream));
+                inputStream.close();
+
+                String filePath = FileUtils.GetRealPathFromUri(data.getData(), requireActivity());
+                this.filepath = filePath;
+                image = new File(filePath);
+            }
+            catch (IOException ignored) {}
+        }
     }
 }

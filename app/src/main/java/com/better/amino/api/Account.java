@@ -58,8 +58,8 @@ public class Account {
         if (map != null){
             AccountUtils.sid = "sid=" + map.get("sid").toString();
             AccountUtils.uid = map.get("auid").toString();
-            AccountUtils.nickname = ((Map<?, ?>) map.get("account")).get("nickname").toString();
-            AccountUtils.bio = Objects.requireNonNullElse(((Map<?, ?>) map.get("account")).get("content"), "").toString();
+            AccountUtils.nickname = ((Map<?, ?>) map.get("userProfile")).get("nickname").toString();
+            AccountUtils.bio = Objects.requireNonNullElse(((Map<?, ?>) map.get("userProfile")).get("content"), "").toString();
             AccountUtils.aminoId = ((Map<?, ?>) map.get("account")).get("aminoId").toString();
             AccountUtils.icon = Objects.requireNonNullElse(((Map<?, ?>) map.get("userProfile")).get("icon"), "").toString();
             AccountUtils.logged = true;

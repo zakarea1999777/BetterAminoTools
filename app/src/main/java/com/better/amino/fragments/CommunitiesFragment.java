@@ -66,7 +66,7 @@ public class CommunitiesFragment extends Fragment {
         binding = FragmentCommunitiesBinding.inflate(getLayoutInflater());
         communityView = view.findViewById(R.id.community_list);
 
-        Community community = new Community();
+        Community community = new Community(requireActivity());
         CommunitiesAdapter communitiesAdapter = new CommunitiesAdapter(requireContext(), community.getCommunities());
 
         communityView.setAdapter(communitiesAdapter);

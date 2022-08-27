@@ -2,13 +2,18 @@ package com.better.amino.requests;
 
 
 import android.app.Activity;
+import android.content.Intent;
 
+import com.better.amino.activites.MainActivity;
+import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.ui.IntentManager;
+import com.better.amino.ui.SharedValue;
 import com.better.amino.ui.ToastManager;
 import com.better.amino.utils.Headers;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +31,7 @@ public class RequestNetwork {
 
     private static String api = "https://service.narvii.com/api/v1";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    public static final MediaType MEDIA_TYPE_JPG = MediaType.parse("application/octet-stream");
 
     /* Request Method POST */
 
@@ -91,9 +97,10 @@ public class RequestNetwork {
             statuscode = ((Double) responseBody.get("api:statuscode")).intValue();
             apimessage = responseBody.get("api:message").toString();
 
-            if (statuscode != 0) {
-                ToastManager.makeToast(context, apimessage);
-                return null;
+            switch (statuscode) {
+                case 0: break;
+                case 105: new SharedValue(context).saveBoolean("logged", false); AccountUtils.logged = false; context.startActivity(new Intent(context, MainActivity.class)); return null;
+                default: ToastManager.makeToast(context, apimessage); return null;
             }
         }
 
@@ -133,6 +140,48 @@ public class RequestNetwork {
         }
 
         catch (IOException | InterruptedException | ExecutionException | IllegalStateException ignored) {ToastManager.makeToast(context, responseJson);}
+        return responseBody;
+    }
+
+    public static Map<String, Object> post(Activity context, String url, File inputStream) {
+        String responseJson = "";
+        Map<String, Object> responseBody = null;
+        String apimessage;
+        int statuscode;
+
+        try {
+            okhttp3.Headers.Builder headerBuilder = new okhttp3.Headers.Builder();
+
+            for (Map.Entry<String, String> entry : Headers.GetHeaders((int) inputStream.length()).entrySet()) {
+                headerBuilder.add(entry.getKey(), entry.getValue());
+            }
+
+            RequestBody body = RequestBody.create(inputStream, MEDIA_TYPE_JPG);
+
+            request = new Request.Builder().url(api + url).post(body).headers(headerBuilder.build()).build();
+
+            System.out.println(new Gson().toJson(request.headers()));
+
+            CallbackFuture future = new CallbackFuture();
+            client.newCall(request).enqueue(future);
+
+            responseJson = future.get().body().string();
+            responseBody = new Gson().fromJson(responseJson, new TypeToken<HashMap<String, Object>>() {}.getType());
+            statuscode = ((Double) responseBody.get("api:statuscode")).intValue();
+            apimessage = responseBody.get("api:message").toString();
+
+
+            if (statuscode != 0) {
+                ToastManager.makeToast(context, "Failed to Upload Image: " + apimessage);
+                return null;
+            }
+        }
+
+        catch (IOException | InterruptedException | ExecutionException | IllegalStateException ignored) {
+            ignored.printStackTrace();
+            ToastManager.makeToast(context, "Failed to Upload Image: " + responseJson);
+        }
+
         return responseBody;
     }
 }

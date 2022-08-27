@@ -17,6 +17,10 @@ public class Community {
 
     // TODO: Complete Those Later
 
+    public Community(Activity context){
+        this.context = context;
+    }
+
     public ArrayList<Map<String, Object>> getCommunities() {
 
         Map<String, Object> map = RequestNetwork.get(context, getcoms);
