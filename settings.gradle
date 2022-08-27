@@ -14,4 +14,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Amino"
 include ':app'
+include ':sample'
 include ':library'
