@@ -10,7 +10,7 @@ import java.util.Locale;
 import java.util.Map;
 
 public class Headers {
-    private static Map<String, String> headers = new HashMap<>();
+    public static Map<String, String> headers = new HashMap<>();
 
     /* Generate Request Headers */
 
@@ -28,7 +28,6 @@ public class Headers {
 
         return headers;
     }
-
 
     public static Map<String, String> GetHeaders(int i) {
         headers.clear();

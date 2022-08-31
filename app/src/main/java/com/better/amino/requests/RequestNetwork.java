@@ -1,10 +1,9 @@
 package com.better.amino.requests;
 
-
 import android.app.Activity;
 import android.content.Intent;
 
-import com.better.amino.activites.MainActivity;
+import com.better.amino.activities.MainActivity;
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.ui.IntentManager;
 import com.better.amino.ui.SharedValue;
@@ -99,7 +98,7 @@ public class RequestNetwork {
 
             switch (statuscode) {
                 case 0: break;
-                case 105: new SharedValue(context).saveBoolean("logged", false); AccountUtils.logged = false; context.startActivity(new Intent(context, MainActivity.class)); return null;
+                case 105: ToastManager.makeToast(context, "Session is Expired"); return null;
                 default: ToastManager.makeToast(context, apimessage); return null;
             }
         }
@@ -159,9 +158,7 @@ public class RequestNetwork {
             RequestBody body = RequestBody.create(inputStream, MEDIA_TYPE_JPG);
 
             request = new Request.Builder().url(api + url).post(body).headers(headerBuilder.build()).build();
-
-            System.out.println(new Gson().toJson(request.headers()));
-
+            
             CallbackFuture future = new CallbackFuture();
             client.newCall(request).enqueue(future);
 

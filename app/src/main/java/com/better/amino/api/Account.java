@@ -1,11 +1,10 @@
 package com.better.amino.api;
 
-
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 
-import com.better.amino.activites.HomeActivity;
+import com.better.amino.activities.HomeActivity;
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.requests.RequestNetwork;
 import com.better.amino.ui.SharedValue;
@@ -15,13 +14,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-
 public class Account {
 
     Activity context;
 
     /* Account Related EndPoints */
-
     private static final String login = "/g/s/auth/login";
     private static final String register = "/g/s/auth/register";
     private static final String logout = "/g/s/auth/logout";
@@ -53,6 +50,34 @@ public class Account {
         data.put("v", 2);
         data.put("email", email);
         data.put("secret", "0 " + password);
+
+        Map<String, Object> map = RequestNetwork.post(context, login, data);
+        if (map != null){
+            AccountUtils.sid = "sid=" + map.get("sid").toString();
+            AccountUtils.uid = map.get("auid").toString();
+            AccountUtils.nickname = ((Map<?, ?>) map.get("userProfile")).get("nickname").toString();
+            AccountUtils.bio = Objects.requireNonNullElse(((Map<?, ?>) map.get("userProfile")).get("content"), "").toString();
+            AccountUtils.aminoId = ((Map<?, ?>) map.get("account")).get("aminoId").toString();
+            AccountUtils.icon = Objects.requireNonNullElse(((Map<?, ?>) map.get("userProfile")).get("icon"), "").toString();
+            AccountUtils.logged = true;
+            SharedValue shared = new SharedValue(context);
+            shared.saveString("sid", AccountUtils.sid);
+            shared.saveString("uid", AccountUtils.uid);
+            shared.saveString("nickname", AccountUtils.nickname);
+            shared.saveString("aminoId", AccountUtils.aminoId);
+            shared.saveString("icon", AccountUtils.icon);
+            shared.saveString("bio", AccountUtils.bio);
+            shared.saveBoolean("logged", AccountUtils.logged);
+            context.startActivity(new Intent(context, HomeActivity.class));
+        }
+    }
+
+    public void Login(String password){
+        Map<String, Object> data = new HashMap<>();
+        data.put("clientType", 100);
+        data.put("action", "normal");
+        data.put("deviceID", Utils.deviceId());
+        data.put("secret", "30 " + password);
 
         Map<String, Object> map = RequestNetwork.post(context, login, data);
         if (map != null){
