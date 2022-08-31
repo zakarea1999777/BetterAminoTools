@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.better.amino.fragments.ProfileFragment"
+        android:name="com.better.amino.fragments.home.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/communitiesFragment"
-        android:name="com.better.amino.fragments.CommunitiesFragment"
+        android:name="com.better.amino.fragments.home.CommunitiesFragment"
         android:label="fragment_communities"
         tools:layout="@layout/fragment_communities" />
 </navigation>

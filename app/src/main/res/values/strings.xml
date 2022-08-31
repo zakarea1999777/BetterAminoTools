@@ -8,14 +8,31 @@
     <string name="forget_password">Forget Password?</string>
     <string name="login_with_google">Login With Google</string>
     <string name="login">Login</string>
+
+    <!-- Strings used by MainBarMenu, NavigationRailMenu -->
     <string name="communities">Communities</string>
     <string name="profile">Profile</string>
     <string name="chats">Chats</string>
     <string name="explore">Explore</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="guidelines">Guidelines</string>
+
+    <!-- Strings used by ProfileFragment -->
     <string name="set">Set</string>
     <string name="bio">Bio</string>
     <string name="nickname">Nickname</string>
+
+    <!-- Strings used by CommunitiesFragment -->
+    <string name="my_communities">My Communities</string>
+
+    <!-- Strings used by CommunityHomeFragment -->
+    <string name="blogs">Blogs</string>
+
+    <!-- Strings used by CommunityChatsFragment -->
+    <string name="private_chat">Private Chat</string>
+
+    <!-- Strings used by ChatActivity -->
+    <string name="hello_world">Hello World</string>
+    <string name="message">Message</string>
 
 </resources>

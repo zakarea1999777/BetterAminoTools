@@ -5,19 +5,25 @@
         android:enabled="true"
         android:icon="@drawable/user"
         android:title="@string/profile"/>
-    <!--<item
-        android:id="@+id/explore"
-        android:enabled="true"
-        android:icon="@drawable/explore"
-        android:title="@string/explore"/>
-    <item
-        android:id="@+id/page_3"
-        android:enabled="true"
-        android:icon="@drawable/chats"
-        android:title="@string/chats"/>-->
+
     <item
         android:id="@+id/communities"
         android:enabled="true"
         android:icon="@drawable/communities"
         android:title="@string/communities"/>
+
+    <!--
+        Soon:
+
+        <item
+            android:id="@+id/explore"
+            android:enabled="true"
+            android:icon="@drawable/explore"
+            android:title="@string/explore"/>
+        <item
+            android:id="@+id/page_3"
+            android:enabled="true"
+            android:icon="@drawable/chats"
+            android:title="@string/chats"/>
+    -->
 </menu>

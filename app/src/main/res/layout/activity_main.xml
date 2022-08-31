@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    tools:context=".activites.MainActivity">
+    tools:context=".activities.MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -16,7 +16,6 @@
         android:paddingEnd="@dimen/spacing_large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -78,21 +77,6 @@
             android:layout_marginTop="@dimen/spacing_medium"
             android:text="@string/login"
             app:cornerRadius="5dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/google_btn"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_medium"
-            android:text="@string/login_with_google"
-
-            app:cornerRadius="5dp"
-            app:icon="@drawable/ic_google"
-            app:iconGravity="textStart"
-            app:iconPadding="12dp"
-            app:iconSize="20dp"
-            app:iconTint="@null" />
 
     </LinearLayout>
 

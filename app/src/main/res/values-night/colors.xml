@@ -1,4 +1,5 @@
 <resources>
+
     <!--
     Used on devices when we can technically use "transparent" system bars, but fully
     transparent system bars would actually be made translucent by OS.
@@ -7,6 +8,5 @@
 
     <color name="white">#ffffffff</color>
     <color name="black">#ff1c1b20</color>
-    <color name="def">#ffaba5af</color>
 
 </resources>

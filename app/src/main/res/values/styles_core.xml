@@ -37,4 +37,9 @@
 
     <style name="Theme.Amino.App" parent="Theme.Amino.Base" />
 
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
 </resources>
