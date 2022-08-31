@@ -38,7 +38,6 @@ jobs:
       - name: Build with gradle
         uses: gradle/gradle-build-action@v2.3.0
         with:
-          android-gradle-plugin: 7.4.0
           gradle-version: 7.5.1
           arguments: assembleDebug
 
