@@ -21,8 +21,6 @@ import okhttp3.WebSocket;
 
 public class ChatActivity extends AppCompatActivity {
 
-    private WebSocket webSocket;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +56,7 @@ public class ChatActivity extends AppCompatActivity {
         Request request = new Request.Builder().url("wss://ws1.narvii.com/?signbody=" + data.replace("|", "%7C")).headers(headerBuilder.build()).build();
 
         MessagesAdapter adapter = new MessagesAdapter(this, new ArrayList<>());
-        webSocket = client.newWebSocket(request, new MessageListener(this, adapter));
+        WebSocket webSocket = client.newWebSocket(request, new MessageListener(this, adapter));
 
     }
 }

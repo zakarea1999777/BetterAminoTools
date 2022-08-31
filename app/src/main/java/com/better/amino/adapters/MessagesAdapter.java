@@ -5,32 +5,26 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.better.amino.R;
 import com.better.amino.api.utils.AccountUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHolder> {
 
-    private ArrayList<Map<String, Object>> mData;
-    private LayoutInflater mInflater;
+    private final ArrayList<Map<String, Object>> mData;
+    private final LayoutInflater mInflater;
     private ItemClickListener mClickListener;
-    private Context context;
+    private final Context context;
 
     // data is passed into the constructor
     public MessagesAdapter(Context context, ArrayList<Map<String, Object>> data) {
@@ -95,12 +89,12 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        MaterialTextView sentMessage;
-        MaterialTextView receivedMessage;
-        MaterialTextView sentNickname;
-        MaterialTextView receivedNickname;
-        CircleImageView sentIcon;
-        CircleImageView receivedIcon;
+        final MaterialTextView sentMessage;
+        final MaterialTextView receivedMessage;
+        final MaterialTextView sentNickname;
+        final MaterialTextView receivedNickname;
+        final CircleImageView sentIcon;
+        final CircleImageView receivedIcon;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -115,7 +109,7 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (mClickListener != null) mClickListener.onItemClick(view, getAbsoluteAdapterPosition());
         }
     }
 

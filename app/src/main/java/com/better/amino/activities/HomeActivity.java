@@ -21,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CommunitiesFragment()).commit();
         botNavView = findViewById(R.id.bottom_bar);
         botNavView.getMenu().findItem(R.id.communities).setChecked(true);
-        botNavView.setOnNavigationItemSelectedListener(item -> {
+        botNavView.setOnItemSelectedListener(item -> {
             Fragment fragment = null;
 
             switch (item.getItemId()){

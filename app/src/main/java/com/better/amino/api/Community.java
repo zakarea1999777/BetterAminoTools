@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class Community {
 
-    Activity context;
+    final Activity context;
 
     /* Community Related EndPoints */
 
@@ -35,8 +35,7 @@ public class Community {
         Map<String, Object> map = RequestNetwork.get(context, getchats);
 
         if (map != null) {
-            ArrayList<Map<String, Object>> chats = (ArrayList<Map<String, Object>>) map.get("threadList");
-            return chats;}
+            return (ArrayList<Map<String, Object>>) map.get("threadList");}
             else {return new ArrayList<>();
         }
     }

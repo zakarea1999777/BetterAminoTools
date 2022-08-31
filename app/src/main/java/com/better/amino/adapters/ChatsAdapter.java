@@ -18,8 +18,8 @@ import java.util.Map;
 
 public class ChatsAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<Map<String, Object>> chatsList;
+    final Context context;
+    final ArrayList<Map<String, Object>> chatsList;
 
     public ChatsAdapter(Context context, ArrayList<Map<String, Object>> communityList) {
         this.context = context;

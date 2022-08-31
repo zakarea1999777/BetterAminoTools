@@ -7,7 +7,6 @@ import com.better.amino.activities.MainActivity;
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.requests.RequestNetwork;
 import com.better.amino.ui.SharedValue;
-import com.google.gson.Gson;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Global {
-    Activity context;
+    final Activity context;
 
     /* Global Related EndPoints */
 
@@ -72,7 +71,8 @@ public class Global {
 
     public ArrayList<Map<String, Object>> getCommunities() {
         Map<String, Object> map = RequestNetwork.get(context, getcoms);
-        try{ArrayList<Map<String, Object>> communities = (ArrayList<Map<String, Object>>) map.get("communityList"); return communities;}
+        try{
+            return (ArrayList<Map<String, Object>>) map.get("communityList");}
         catch (Exception e){
             AccountUtils.logged = false;
             new SharedValue(context).saveBoolean("logged", false);

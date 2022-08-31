@@ -13,7 +13,6 @@ import androidx.fragment.app.Fragment;
 import com.better.amino.R;
 import com.better.amino.activities.CommunityActivity;
 import com.better.amino.adapters.CommunitiesAdapter;
-import com.better.amino.api.Community;
 import com.better.amino.api.Global;
 import com.better.amino.api.utils.CommunityUtils;
 

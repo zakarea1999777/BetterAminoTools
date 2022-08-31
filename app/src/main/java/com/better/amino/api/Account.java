@@ -16,7 +16,7 @@ import java.util.Objects;
 
 public class Account {
 
-    Activity context;
+    final Activity context;
 
     /* Account Related EndPoints */
     private static final String login = "/g/s/auth/login";
@@ -125,7 +125,7 @@ public class Account {
         }
     }
 
-    public void Logout(Activity context, String email, String password){
+    public void Logout(Activity context){
         Map<String, Object> data = new HashMap<>();
         data.put("clientType", 100);
         data.put("deviceID", Utils.deviceId());

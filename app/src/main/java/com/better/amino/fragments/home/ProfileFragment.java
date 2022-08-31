@@ -69,15 +69,13 @@ public class ProfileFragment extends Fragment {
             else {AnimationManager.simulateErrorProgress(set);}
         });
 
-        icon.setOnClickListener(vie -> {
-            profileFragmentResultLauncher.launch(new Intent(Intent.ACTION_PICK).setType("image/*"), ActivityOptionsCompat.makeBasic());
-        });
+        icon.setOnClickListener(vie -> profileFragmentResultLauncher.launch(new Intent(Intent.ACTION_PICK).setType("image/*"), ActivityOptionsCompat.makeBasic()));
 
         return view;
     }
 
 
-    ActivityResultLauncher<Intent> profileFragmentResultLauncher = registerForActivityResult(
+    final ActivityResultLauncher<Intent> profileFragmentResultLauncher = registerForActivityResult(
         new ActivityResultContracts.StartActivityForResult(),
         result -> {
             if (result.getResultCode() == Activity.RESULT_OK) {

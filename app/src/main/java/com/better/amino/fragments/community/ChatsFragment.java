@@ -15,7 +15,6 @@ import com.better.amino.activities.ChatActivity;
 import com.better.amino.adapters.ChatsAdapter;
 import com.better.amino.api.Community;
 import com.better.amino.api.utils.ChatUtils;
-import com.better.amino.api.utils.CommunityUtils;
 
 import java.util.ArrayList;
 import java.util.Map;

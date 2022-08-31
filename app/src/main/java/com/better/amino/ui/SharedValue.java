@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 
 public class SharedValue {
-    private Activity context;
+    private final Activity context;
 
     public SharedValue(Activity activity){
         context = activity;

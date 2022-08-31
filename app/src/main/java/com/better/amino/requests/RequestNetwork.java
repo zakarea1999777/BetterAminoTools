@@ -1,12 +1,8 @@
 package com.better.amino.requests;
 
 import android.app.Activity;
-import android.content.Intent;
 
-import com.better.amino.activities.MainActivity;
-import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.ui.IntentManager;
-import com.better.amino.ui.SharedValue;
 import com.better.amino.ui.ToastManager;
 import com.better.amino.utils.Headers;
 import com.google.gson.Gson;
@@ -28,7 +24,7 @@ public class RequestNetwork {
     private static Request request;
     private static final OkHttpClient client = new OkHttpClient();
 
-    private static String api = "https://service.narvii.com/api/v1";
+    private static final String api = "https://service.narvii.com/api/v1";
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static final MediaType MEDIA_TYPE_JPG = MediaType.parse("application/octet-stream");
 
@@ -174,8 +170,8 @@ public class RequestNetwork {
             }
         }
 
-        catch (IOException | InterruptedException | ExecutionException | IllegalStateException ignored) {
-            ignored.printStackTrace();
+        catch (IOException | InterruptedException | ExecutionException | IllegalStateException e) {
+            e.printStackTrace();
             ToastManager.makeToast(context, "Failed to Upload Image: " + responseJson);
         }
 

@@ -17,8 +17,8 @@ import java.util.Map;
 
 public class CommunitiesAdapter extends BaseAdapter {
 
-    Context context;
-    ArrayList<Map<String, Object>> communityList;
+    final Context context;
+    final ArrayList<Map<String, Object>> communityList;
 
     public CommunitiesAdapter(Context context, ArrayList<Map<String, Object>> communityList) {
         this.context = context;
