@@ -17,12 +17,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    
-      - name: Clean with gradle
-        uses: gradle/gradle-build-action@v2.3.0
-        with:
-          arguments: clean
-      
       - name: Checkout repository
         uses: actions/checkout@v3.0.2
 
@@ -34,6 +28,11 @@ jobs:
 
       - name: Give permission to executable
         run: chmod +x gradlew
+        
+      - name: Clean with gradle
+        uses: gradle/gradle-build-action@v2.3.0
+        with:
+          arguments: clean
 
       - name: Build with gradle
         uses: gradle/gradle-build-action@v2.3.0
