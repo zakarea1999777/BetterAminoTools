@@ -17,6 +17,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    
+      - name: Clean with gradle
+        uses: gradle/gradle-build-action@v2.3.0
+        with:
+          arguments: clean
+      
       - name: Checkout repository
         uses: actions/checkout@v3.0.2
 
