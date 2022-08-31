@@ -86,27 +86,24 @@ class MorphingAnimation {
     public void start() {
         ValueAnimator widthAnimation = ValueAnimator.ofInt(mFromWidth, mToWidth);
         final GradientDrawable gradientDrawable = mDrawable.getGradientDrawable();
-        widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                Integer value = (Integer) animation.getAnimatedValue();
-                int leftOffset;
-                int rightOffset;
-                int padding;
+        widthAnimation.addUpdateListener(animation -> {
+            Integer value = (Integer) animation.getAnimatedValue();
+            int leftOffset;
+            int rightOffset;
+            int padding;
 
-                if (mFromWidth > mToWidth) {
-                    leftOffset = (mFromWidth - value) / 2;
-                    rightOffset = mFromWidth - leftOffset;
-                    padding = (int) (mPadding * animation.getAnimatedFraction());
-                } else {
-                    leftOffset = (mToWidth - value) / 2;
-                    rightOffset = mToWidth - leftOffset;
-                    padding = (int) (mPadding - mPadding * animation.getAnimatedFraction());
-                }
-
-                gradientDrawable
-                        .setBounds(leftOffset + padding, padding, rightOffset - padding, mView.getHeight() - padding);
+            if (mFromWidth > mToWidth) {
+                leftOffset = (mFromWidth - value) / 2;
+                rightOffset = mFromWidth - leftOffset;
+                padding = (int) (mPadding * animation.getAnimatedFraction());
+            } else {
+                leftOffset = (mToWidth - value) / 2;
+                rightOffset = mToWidth - leftOffset;
+                padding = (int) (mPadding - mPadding * animation.getAnimatedFraction());
             }
+
+            gradientDrawable
+                    .setBounds(leftOffset + padding, padding, rightOffset - padding, mView.getHeight() - padding);
         });
 
         ObjectAnimator bgColorAnimation = ObjectAnimator.ofInt(gradientDrawable, "color", mFromColor, mToColor);

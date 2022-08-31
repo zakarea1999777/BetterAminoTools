@@ -503,16 +503,13 @@ public class CircularProgressButton extends Button {
 
         animation.setFromStrokeColor(mColorIndicator);
         animation.setToStrokeColor(getNormalColor(mIdleColorState));
-        animation.setListener(new OnAnimationEndListener() {
-            @Override
-            public void onAnimationEnd() {
-                removeIcon();
-                setText(mIdleText);
-                mMorphingInProgress = false;
-                mState = State.IDLE;
+        animation.setListener(() -> {
+            removeIcon();
+            setText(mIdleText);
+            mMorphingInProgress = false;
+            mState = State.IDLE;
 
-                mStateManager.checkState(CircularProgressButton.this);
-            }
+            mStateManager.checkState(CircularProgressButton.this);
         });
 
         animation.start();

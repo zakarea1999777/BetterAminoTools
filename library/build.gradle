@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace 'com.dd.circular.progress.button'
     compileSdkVersion 33
 
     defaultConfig {
