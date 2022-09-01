@@ -27,3 +27,20 @@ If you have any questions, ideas, need help or want to propose a change just ope
 <img width="125" height="250" src="https://user-images.githubusercontent.com/105792721/187902059-b286b8eb-ce68-4334-8c4c-a79591d82cc5.jpg">
 
 <p>
+
+## TO-DO
+
+- \[x] Text Chatting
+- \[x] Editing Global Profile
+- \[x] Show community chats
+- \[ \] Leave/Join Community 
+- \[ \] Leave/Join Chats 
+- \[ \] Sneding Images/Voices/Embeds/Videos/YtVideos
+- \[ \] Managing Chats
+- \[ \] Edit Community Profile
+- \[ \] Show Community Blogs
+- \[ \] Comment
+- \[ \] Show Community Guidelines
+- \[ \] Sending Coins
+- \[ \] Get Chat Message History
+- \[ \] Spam Protection
