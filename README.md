@@ -20,11 +20,11 @@ If you have any questions, ideas, need help or want to propose a change just ope
 
 <p align="center">
 
-<img width="125" height="250" src="https://user-images.githubusercontent.com/105792721/187902052-2fe58678-7201-444a-94fc-0aa078c7a3c5.jpg">
-<img width="125" height="250" src="https://user-images.githubusercontent.com/105792721/187902055-0955d1bb-845f-4e4c-b383-5b1a8591e392.jpg">
-<img width="125" height="250" src="https://user-images.githubusercontent.com/105792721/187902056-601a9724-084d-41d8-b891-a38bec6f7ff7.jpg">
-<img width="125" height="250" src="https://user-images.githubusercontent.com/105792721/187902058-5b09e061-c50b-43dd-96ae-81cc4b1329da.jpg">
-<img width="125" height="250" src="https://user-images.githubusercontent.com/105792721/187902059-b286b8eb-ce68-4334-8c4c-a79591d82cc5.jpg">
+<img width="125" height="225" src="https://user-images.githubusercontent.com/105792721/187902052-2fe58678-7201-444a-94fc-0aa078c7a3c5.jpg">
+<img width="125" height="225" src="https://user-images.githubusercontent.com/105792721/187902055-0955d1bb-845f-4e4c-b383-5b1a8591e392.jpg">
+<img width="125" height="225" src="https://user-images.githubusercontent.com/105792721/187902056-601a9724-084d-41d8-b891-a38bec6f7ff7.jpg">
+<img width="125" height="225" src="https://user-images.githubusercontent.com/105792721/187902058-5b09e061-c50b-43dd-96ae-81cc4b1329da.jpg">
+<img width="125" height="225" src="https://user-images.githubusercontent.com/105792721/187902059-b286b8eb-ce68-4334-8c4c-a79591d82cc5.jpg">
 
 <p>
 
