@@ -2,6 +2,7 @@
 name: Code Formatter
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - master
