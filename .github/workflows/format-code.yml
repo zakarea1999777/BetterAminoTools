@@ -20,10 +20,10 @@ jobs:
       - name: Give permission to executable
         run: chmod +x gradlew
 
-      - name: Format Kotlin Source
+      - name: Format Java Source
         uses: gradle/gradle-build-action@v2.3.0
         with:
-          arguments: ktlintFormat
+          arguments: javaFormat
 
       - uses: axel-op/googlejavaformat-action@v3.6.0
         with:
