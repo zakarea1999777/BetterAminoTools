@@ -57,7 +57,7 @@ public class ChatsFragment extends Fragment {
 
         chatsView.setOnItemClickListener((parent, vie, position, id) -> {
             CommunityUtils.community = chats.get(position);
-            startActivity(new Intent(requireActivity(), CommunityActivity.class));
+            startActivity(new Intent(requireActivity(), ChatActivity.class));
         });
 
         chatsView.setOnItemLongClickListener((parent, vie, position, id) -> {
