@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Amino</string>
+    <string name="hello_world">Hello World</string>
+    
+    <!-- Strings used by dialogs -->
+    <string name="warning">Warning!</string>
+    <string name="leave_community_description">If you leave this Community, the subscriptions associated with it will stop. Are you sure you want to leave this Community?</string>
+    <string name="cancel">Cancel</string>
+    <string name="leave">Leave</string>
+    <string name="leave_chat_description">Are you sure you want to leave this chat?</string>
 
     <!-- Strings used by MainActivity -->
     <string name="email">Email</string>
@@ -32,14 +40,12 @@
     <string name="private_chat">Private Chat</string>
 
     <!-- Strings used by ChatActivity -->
-    <string name="hello_world">Hello World</string>
     <string name="message">Message</string>
-    <string name="warning">Warning!</string>
-    <string name="leave_community_description">If you leave this Community, the subscriptions associated with it will stop. Are you sure you want to leave this Community?</string>
-    <string name="cancel">Cancel</string>
-    <string name="leave">Leave</string>
-    <string name="leave_chat_description">Are you sure you want to leave this chat?</string>
+
+    <!-- Strings used by SearchCommunityActivity -->
     <string name="search_about_communities">Search About Communities</string>
     <string name="search">Search</string>
+    
+    
 
 </resources>
