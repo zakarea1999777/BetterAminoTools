@@ -13,8 +13,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Community {
-
-    private static RequestNetwork requestNetwork;
     private static String community;
 
     /* Community Related EndPoints */
@@ -31,12 +29,10 @@ public class Community {
     public Community(Activity context) {
         this.context = context;
         RequestNetwork.context = context;
-
         if (CommunityUtils.community.get("ndcId") != null) {
             community = "/x" + ((Double) CommunityUtils.community.get("ndcId")).intValue();
         }
         chat = "/s/chat/thread/" + ChatUtils.chatId;
-
         getchats = community + "/s/chat/thread?type=joined-me&start=0&size=100";
         sendmsg = community + chat + "/message";
         leavecom = community + "/s/community/leave";
@@ -46,7 +42,6 @@ public class Community {
 
     public ArrayList<Map<String, Object>> getChats() {
         Map<String, Object> map = RequestNetwork.get(getchats);
-
         if (map != null) {
             return (ArrayList<Map<String, Object>>) map.get("threadList");
         } else {
@@ -58,9 +53,7 @@ public class Community {
         Map<String, Object> data = new HashMap<>();
         data.put("content", message);
         data.put("type", 0);
-
         Map<String, Object> map = RequestNetwork.post(sendmsg, data);
-
         return map != null;
     }
 
@@ -71,12 +64,11 @@ public class Community {
     public void JoinCommunity() {
         Map<String, Object> map = RequestNetwork.post(joincom, new HashMap<>());
         if (map != null) {
-            ToastManager.makeToast(context,"Community Joined");
+            ToastManager.makeToast(context, "Community Joined");
         }
     }
 
     public void LeaveChat() {
         Map<String, Object> map = RequestNetwork.delete(leavechat);
-        System.out.println(map.get("api:message"));
     }
 }
