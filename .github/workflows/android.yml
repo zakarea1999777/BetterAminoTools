@@ -1,6 +1,7 @@
 name: Android CI
 
 on:
+  workflow_dispatch:
   push:
     paths-ignore:
       - LICENSE
@@ -9,7 +10,6 @@ on:
     paths-ignore:
       - LICENSE
       - README.md
-  workflow_dispatch:
 
 jobs:
   build:
