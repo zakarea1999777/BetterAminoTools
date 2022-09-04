@@ -23,8 +23,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
     private final ArrayList<Map<String, Object>> mData;
     private final LayoutInflater mInflater;
-    private ItemClickListener mClickListener;
     private final Context context;
+    private ItemClickListener mClickListener;
 
     // data is passed into the constructor
     public MessagesAdapter(Context context, ArrayList<Map<String, Object>> data) {
@@ -48,8 +48,10 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
         String url = "";
 
-        try {url = author.get("icon").toString().replace("http", "https");}
-        catch (Exception ignored){}
+        try {
+            url = author.get("icon").toString().replace("http", "https");
+        } catch (Exception ignored) {
+        }
 
         RequestOptions options = new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round).error(R.mipmap.ic_launcher_round);
 
@@ -87,6 +89,26 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         return mData.size();
     }
 
+    // convenience method for getting data at click position
+    Map<String, Object> getItem(int id) {
+        return mData.get(id);
+    }
+
+    // allows clicks events to be caught
+    void setClickListener(ItemClickListener itemClickListener) {
+        this.mClickListener = itemClickListener;
+    }
+
+    public void add(Map<String, Object> data) {
+        mData.add(data);
+        notifyItemInserted(getItemCount() - 1);
+    }
+
+    // parent activity will implement this method to respond to click events
+    public interface ItemClickListener {
+        void onItemClick(View view, int position);
+    }
+
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         final MaterialTextView sentMessage;
@@ -109,27 +131,8 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAbsoluteAdapterPosition());
+            if (mClickListener != null)
+                mClickListener.onItemClick(view, getAbsoluteAdapterPosition());
         }
-    }
-
-    // convenience method for getting data at click position
-    Map<String, Object> getItem(int id) {
-        return mData.get(id);
-    }
-
-    // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
-        this.mClickListener = itemClickListener;
-    }
-
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
-
-    public void add(Map<String, Object> data){
-        mData.add(data);
-        notifyItemInserted(getItemCount() - 1);
     }
 }

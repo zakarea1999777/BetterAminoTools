@@ -25,13 +25,16 @@ public class CommunityActivity extends AppCompatActivity {
         railNavView.setOnItemSelectedListener(item -> {
             Fragment fragment = null;
 
-            switch (item.getItemId()){
-                case R.id.chats_item: fragment = new ChatsFragment(); break;
+            switch (item.getItemId()) {
+                case R.id.chats_item:
+                    fragment = new ChatsFragment();
+                    break;
 
                 case R.id.home_item:
                 case R.id.guidelines_item:
                 case R.id.profile_item:
-                    fragment = new HomeFragment(); break;
+                    fragment = new HomeFragment();
+                    break;
             }
 
             getSupportFragmentManager().beginTransaction().replace(R.id.community_fragment, fragment).commit();

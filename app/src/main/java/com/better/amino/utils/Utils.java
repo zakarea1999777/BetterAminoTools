@@ -3,9 +3,9 @@ package com.better.amino.utils;
 import android.util.Base64;
 
 /*
-* This Java Class Was Created By SirLez
-* Feel Free To Modify For A Better Code
-*/
+ * This Java Class Was Created By SirLez
+ * Feel Free To Modify For A Better Code
+ */
 
 public class Utils {
 

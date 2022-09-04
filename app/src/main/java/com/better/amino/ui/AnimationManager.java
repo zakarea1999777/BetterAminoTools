@@ -9,16 +9,18 @@ public class AnimationManager {
     public static void simulateSuccessProgress(final CircularProgressButton button) {
         if (button.getProgress() == 0) {
             AnimationManager.simulateSuccessProgressAnimation(button);
+        } else {
+            button.setProgress(0);
         }
-        else {button.setProgress(0);}
         button.setProgress(0);
     }
 
     public static void simulateErrorProgress(final CircularProgressButton button) {
         if (button.getProgress() == 0) {
             AnimationManager.simulateErrorProgressAnimation(button);
+        } else {
+            button.setProgress(0);
         }
-        else {button.setProgress(0);}
         button.setProgress(0);
     }
 

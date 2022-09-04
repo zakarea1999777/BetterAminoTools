@@ -21,11 +21,10 @@ import okio.ByteString;
 
 public class MessageListener extends WebSocketListener {
 
-    private final int CHAT_MESSAGES = 1000;
-
     final ChatActivity activity;
     final MessagesAdapter adapter;
     final RecyclerView listView;
+    private final int CHAT_MESSAGES = 1000;
 
     public MessageListener(ChatActivity activity, MessagesAdapter adapter) {
         this.activity = activity;
@@ -41,14 +40,15 @@ public class MessageListener extends WebSocketListener {
 
     @Override
     public void onMessage(@NonNull WebSocket webSocket, @NonNull final String data) {
-        Map<String, Object> json = new Gson().fromJson(data, new TypeToken<Map<String, Object>>() {}.getType());
+        Map<String, Object> json = new Gson().fromJson(data, new TypeToken<Map<String, Object>>() {
+        }.getType());
 
         activity.runOnUiThread(() -> {
-            if (((Double) json.get("t")).intValue() == CHAT_MESSAGES){
+            if (((Double) json.get("t")).intValue() == CHAT_MESSAGES) {
                 Map<String, Object> chatMessage = ((Map<String, Object>) ((Map<String, Object>) json.get("o")).get("chatMessage"));
                 String threadId = chatMessage.get("threadId").toString();
 
-                if (threadId.equals(ChatUtils.chatId)){
+                if (threadId.equals(ChatUtils.chatId)) {
                     listView.setLayoutManager(new LinearLayoutManager(activity));
                     adapter.add(chatMessage);
                     listView.scrollToPosition(adapter.getItemCount() - 1);

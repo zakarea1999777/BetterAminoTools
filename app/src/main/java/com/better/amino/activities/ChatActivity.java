@@ -36,7 +36,7 @@ public class ChatActivity extends AppCompatActivity {
         messageBox.setEndIconOnClickListener(view -> {
             String message = messageText.getText().toString();
 
-            if (community.SendMessage(message)){
+            if (community.SendMessage(message)) {
                 messageText.setText("");
             }
 

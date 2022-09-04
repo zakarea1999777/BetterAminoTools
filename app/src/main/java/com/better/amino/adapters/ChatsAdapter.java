@@ -45,7 +45,7 @@ public class ChatsAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if (convertView == null){
+        if (convertView == null) {
             convertView = inflater.inflate(R.layout.chats_item, null);
         }
 
@@ -54,15 +54,24 @@ public class ChatsAdapter extends BaseAdapter {
 
         String url = "";
 
-        try {url = chatsList.get(position).get("icon").toString().replace("http", "https");}
-        catch (Exception ignored){}
+        try {
+            url = chatsList.get(position).get("icon").toString().replace("http", "https");
+        } catch (Exception ignored) {
+        }
 
         RequestOptions options = new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round).error(R.mipmap.ic_launcher_round);
 
         Glide.with(context).load(Uri.parse(url)).apply(options).into(icon);
 
-        try {title.setText(chatsList.get(position).get("title").toString());}
-        catch (Exception ignored){}
+        try {
+            title.setText(chatsList.get(position).get("title").toString());
+        } catch (Exception ignored) {
+        }
         return convertView;
+    }
+
+    public ChatsAdapter removeItem(int i) {
+        chatsList.remove(i);
+        return this;
     }
 }

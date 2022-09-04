@@ -14,12 +14,18 @@ public class Headers {
 
     /* Generate Request Headers */
 
-    public static Map<String, String> GetHeaders(String data){
+    public static Map<String, String> GetHeaders(String data) {
         headers.clear();
         headers.put("NDCDEVICEID", Utils.deviceId());
-        headers.put("NDC-MSG-SIG", Utils.signature(data));
+        headers.put("User-Agent", "BetterAmino/10 (BetterAmino/BetterAmino; com.better.amino/1.0)");
 
-        if (AccountUtils.sid != null){headers.put("NDCAUTH", AccountUtils.sid);}
+        if (data != null) {
+            headers.put("NDC-MSG-SIG", Utils.signature(data));
+        }
+
+        if (AccountUtils.sid != null) {
+            headers.put("NDCAUTH", AccountUtils.sid);
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             headers.put("Accept-Language", Locale.getDefault(Locale.Category.DISPLAY).toString().replace("_", "-"));
@@ -35,8 +41,11 @@ public class Headers {
         headers.put("Content-Length", String.valueOf(i));
         headers.put("Content-Type", "image/jpg");
         headers.put("Content-Type", "application/octet-stream");
+        headers.put("User-Agent", "BetterAmino/10 (BetterAmino/BetterAmino; com.better.amino/1.0)");
 
-        if (AccountUtils.sid != null){headers.put("NDCAUTH", AccountUtils.sid);}
+        if (AccountUtils.sid != null) {
+            headers.put("NDCAUTH", AccountUtils.sid);
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             headers.put("Accept-Language", Locale.getDefault(Locale.Category.DISPLAY).toString().replace("_", "-"));

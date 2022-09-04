@@ -16,13 +16,10 @@ import java.util.Objects;
 
 public class Account {
 
-    final Activity context;
-
     /* Account Related EndPoints */
     private static final String login = "/g/s/auth/login";
     private static final String register = "/g/s/auth/register";
     private static final String logout = "/g/s/auth/logout";
-
     // TODO: Complete Those Later
     private static final String rsv = "/g/s/auth/request-security-validation";
     private static final String activate = "activate-email";
@@ -32,17 +29,17 @@ public class Account {
     private static final String aminoid = "/g/s/account/change-amino-id";
     private static final String resetpass = "/g/s/auth/reset-password";
     private static final String changepass = "/g/s/account/change-amino-id";
+    final Activity context;
 
-    public Account(Activity context){
+    public Account(Activity context) {
         this.context = context;
     }
 
-    public boolean isLogged(){
+    public boolean isLogged() {
         return AccountUtils.logged;
     }
 
-
-    public void Login(String email, String password){
+    public void Login(String email, String password) {
         Map<String, Object> data = new HashMap<>();
         data.put("clientType", 100);
         data.put("action", "normal");
@@ -51,8 +48,8 @@ public class Account {
         data.put("email", email);
         data.put("secret", "0 " + password);
 
-        Map<String, Object> map = RequestNetwork.post(context, login, data);
-        if (map != null){
+        Map<String, Object> map = RequestNetwork.post(login, data);
+        if (map != null) {
             AccountUtils.sid = "sid=" + map.get("sid").toString();
             AccountUtils.uid = map.get("auid").toString();
             AccountUtils.nickname = ((Map<?, ?>) map.get("userProfile")).get("nickname").toString();
@@ -72,15 +69,15 @@ public class Account {
         }
     }
 
-    public void Login(String password){
+    public void Login(String password) {
         Map<String, Object> data = new HashMap<>();
         data.put("clientType", 100);
         data.put("action", "normal");
         data.put("deviceID", Utils.deviceId());
         data.put("secret", "30 " + password);
 
-        Map<String, Object> map = RequestNetwork.post(context, login, data);
-        if (map != null){
+        Map<String, Object> map = RequestNetwork.post(login, data);
+        if (map != null) {
             AccountUtils.sid = "sid=" + map.get("sid").toString();
             AccountUtils.uid = map.get("auid").toString();
             AccountUtils.nickname = ((Map<?, ?>) map.get("userProfile")).get("nickname").toString();
@@ -100,7 +97,7 @@ public class Account {
         }
     }
 
-    public void Register(String email, String password, String nickname){
+    public void Register(String email, String password, String nickname) {
         Map<String, Object> data = new HashMap<>();
         data.put("clientType", 100);
         data.put("action", "normal");
@@ -115,8 +112,8 @@ public class Account {
         data.put("clientCallbackURL", "narviiapp://relogin");
         data.put("secret", "0 " + password);
 
-        Map<String, Object> map = RequestNetwork.post(context, register, data);
-        if (map != null){
+        Map<String, Object> map = RequestNetwork.post(register, data);
+        if (map != null) {
             AccountUtils.sid = "sid=" + map.get("sid").toString();
             AccountUtils.uid = map.get("auid").toString();
             AccountUtils.nickname = ((Map<?, ?>) map.get("account")).get("nickname").toString();
@@ -125,13 +122,13 @@ public class Account {
         }
     }
 
-    public void Logout(Activity context){
+    public void Logout(Activity context) {
         Map<String, Object> data = new HashMap<>();
         data.put("clientType", 100);
         data.put("deviceID", Utils.deviceId());
 
-        Map<String, Object> map = RequestNetwork.post(context, logout, data);
-        if (map != null){
+        Map<String, Object> map = RequestNetwork.post(logout, data);
+        if (map != null) {
             AccountUtils.sid = "sid=" + map.get("sid").toString();
             AccountUtils.uid = map.get("auid").toString();
             AccountUtils.nickname = ((Map<?, ?>) map.get("account")).get("nickname").toString();

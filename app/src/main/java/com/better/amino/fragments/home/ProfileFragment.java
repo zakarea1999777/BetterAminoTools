@@ -40,10 +40,28 @@ public class ProfileFragment extends Fragment {
     CircleImageView camera;
     File image = null;
     String filepath;
+    final ActivityResultLauncher<Intent> profileFragmentResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+
+                    try {
+                        InputStream inputStream = requireContext().getContentResolver().openInputStream(data.getData());
+                        icon.setImageBitmap(BitmapFactory.decodeStream(inputStream));
+                        inputStream.close();
+
+                        String filePath = FileUtils.GetRealPathFromUri(data.getData(), requireActivity());
+                        this.filepath = filePath;
+                        image = new File(filePath);
+                    } catch (IOException ignored) {
+                    }
+                }
+            });
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_profile, container,false);
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
         icon = view.findViewById(R.id.profile_icon);
         nickname = view.findViewById(R.id.nickname);
         bio = view.findViewById(R.id.bio);
@@ -54,8 +72,10 @@ public class ProfileFragment extends Fragment {
 
         String url = "";
 
-        try {url = AccountUtils.icon.replace("http", "https");}
-        catch (Exception ignored) {}
+        try {
+            url = AccountUtils.icon.replace("http", "https");
+        } catch (Exception ignored) {
+        }
 
         Glide.with(requireContext()).load(Uri.parse(url)).apply(options).into(icon);
 
@@ -65,32 +85,15 @@ public class ProfileFragment extends Fragment {
 
         set.setOnClickListener(vie -> {
             set.setProgress(0);
-            if (new Global(requireActivity()).EditProfile(nickname.getText().toString(), bio.getText().toString(), image)){AnimationManager.simulateSuccessProgress(set);}
-            else {AnimationManager.simulateErrorProgress(set);}
+            if (new Global(requireActivity()).EditProfile(nickname.getText().toString(), bio.getText().toString(), image)) {
+                AnimationManager.simulateSuccessProgress(set);
+            } else {
+                AnimationManager.simulateErrorProgress(set);
+            }
         });
 
         icon.setOnClickListener(vie -> profileFragmentResultLauncher.launch(new Intent(Intent.ACTION_PICK).setType("image/*"), ActivityOptionsCompat.makeBasic()));
 
         return view;
     }
-
-
-    final ActivityResultLauncher<Intent> profileFragmentResultLauncher = registerForActivityResult(
-        new ActivityResultContracts.StartActivityForResult(),
-        result -> {
-            if (result.getResultCode() == Activity.RESULT_OK) {
-                Intent data = result.getData();
-
-                try {
-                    InputStream inputStream = requireContext().getContentResolver().openInputStream(data.getData());
-                    icon.setImageBitmap(BitmapFactory.decodeStream(inputStream));
-                    inputStream.close();
-
-                    String filePath = FileUtils.GetRealPathFromUri(data.getData(), requireActivity());
-                    this.filepath = filePath;
-                    image = new File(filePath);
-                }
-                catch (IOException ignored) {}
-            }
-        });
 }

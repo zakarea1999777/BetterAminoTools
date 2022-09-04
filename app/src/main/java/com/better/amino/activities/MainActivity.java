@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 
         AccountUtils.logged = shared.getBoolean("logged");
 
-        if (account.isLogged()){
+        if (account.isLogged()) {
             AccountUtils.sid = shared.getString("sid");
             AccountUtils.uid = shared.getString("uid");
             AccountUtils.nickname = shared.getString("nickname");
@@ -48,11 +48,11 @@ public class MainActivity extends Activity {
         password.setText(shared.getString("password"));
 
         login_btn.setOnClickListener(view -> {
-            if (email.getText().toString().equals(""))
-            {email.setError("Email Can't Be Empty");}
-            else if (password.getText().toString().equals(""))
-            {password.setError("Password Can't Be Empty");}
-            else {
+            if (email.getText().toString().equals("")) {
+                email.setError("Email Can't Be Empty");
+            } else if (password.getText().toString().equals("")) {
+                password.setError("Password Can't Be Empty");
+            } else {
                 account.Login(email.getText().toString(), password.getText().toString());
                 shared.saveString("email", email.getText().toString());
                 shared.saveString("password", password.getText().toString());

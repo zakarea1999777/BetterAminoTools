@@ -5,9 +5,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.better.amino.R;
 import com.better.amino.fragments.home.CommunitiesFragment;
 import com.better.amino.fragments.home.ProfileFragment;
-import com.better.amino.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -24,9 +24,13 @@ public class HomeActivity extends AppCompatActivity {
         botNavView.setOnItemSelectedListener(item -> {
             Fragment fragment = null;
 
-            switch (item.getItemId()){
-                case R.id.communities: fragment = new CommunitiesFragment(); break;
-                case R.id.profile: fragment = new ProfileFragment(); break;
+            switch (item.getItemId()) {
+                case R.id.communities:
+                    fragment = new CommunitiesFragment();
+                    break;
+                case R.id.profile:
+                    fragment = new ProfileFragment();
+                    break;
             }
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment, fragment).commit();
