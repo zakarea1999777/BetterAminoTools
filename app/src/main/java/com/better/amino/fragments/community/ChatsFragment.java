@@ -55,11 +55,6 @@ public class ChatsFragment extends Fragment {
 
                 .setNeutralButton(getResources().getString(R.string.cancel), (dialog1, id) -> dialog1.cancel());
 
-        chatsView.setOnItemClickListener((parent, vie, position, id) -> {
-            CommunityUtils.community = chats.get(position);
-            startActivity(new Intent(requireActivity(), ChatActivity.class));
-        });
-
         chatsView.setOnItemLongClickListener((parent, vie, position, id) -> {
             dialog.setPositiveButton(getString(R.string.leave), (dialog1, dialogId) -> {
                 ChatUtils.chatId = chats.get(position).get("threadId").toString();
@@ -72,5 +67,4 @@ public class ChatsFragment extends Fragment {
 
         return view;
     }
-
 }
