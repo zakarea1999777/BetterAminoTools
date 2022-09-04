@@ -10,11 +10,11 @@
         android:id="@+id/navigation_rail"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        app:menuGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/navigation_rail_menu" />
+        app:menu="@menu/navigation_rail_menu"
+        app:menuGravity="center" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/community_fragment"

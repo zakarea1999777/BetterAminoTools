@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -23,56 +22,54 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/nickname"
-            app:startIconContentDescription="hello"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_icon">
+            app:layout_constraintTop_toBottomOf="@+id/profile_icon"
+            app:startIconContentDescription="hello">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/nickname"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="13sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
-        
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/biolayout"
             style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/bio"
             android:layout_marginTop="@dimen/spacing_small"
-            app:startIconContentDescription="hello"
+            android:hint="@string/bio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nickname">
+            app:layout_constraintTop_toBottomOf="@+id/profile_icon"
+            app:startIconContentDescription="hello">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/bio"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="13sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.dd.CircularProgressButton
             android:id="@+id/set_btn"
+            style="@style/Widget.Material3.Button.TonalButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
             android:textColor="?colorOnSurface"
+            app:cpb_colorIndicator="?colorPrimary"
+            app:cpb_cornerRadius="3dp"
             app:cpb_iconComplete="@drawable/done"
             app:cpb_iconError="@drawable/failed"
+            app:cpb_selectorIdle="?colorSecondaryContainer"
             app:cpb_textComplete="Completed"
             app:cpb_textError="Error"
-            app:cpb_textIdle="Set"
-            android:layout_marginTop="@dimen/spacing_small"
-            app:cpb_cornerRadius="3dp"
-            app:cpb_colorIndicator="?colorPrimary"
-            app:cpb_selectorIdle="?colorSecondaryContainer"
-            style="@style/Widget.Material3.Button.TonalButton" />
+            app:cpb_textIdle="Set" />
 
     </LinearLayout>
 

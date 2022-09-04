@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.Amino" parent="Theme.Material3.DynamicColors.DayNight"/>
+    <style name="Theme.Amino" parent="Theme.Material3.DynamicColors.DayNight" />
 
     <style name="Theme.Amino.V23" parent="Theme.Amino" />
 
@@ -25,7 +25,8 @@
         <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Amino.HeadlineMedium</item>
         <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Amino.HeadlineSmall</item>
         <item name="textAppearanceTitleLarge">@style/TextAppearance.Amino.TitleLarge</item>
-        <item name="textAppearanceTitleMedium">@style/TextAppearance.Amino.TitleMediumLowEmphasis</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Amino.TitleMediumLowEmphasis
+        </item>
         <item name="textAppearanceTitleSmall">@style/TextAppearance.Amino.TitleSmall</item>
         <item name="textAppearanceLabelLarge">@style/TextAppearance.Amino.LabelLarge</item>
         <item name="textAppearanceLabelMedium">@style/TextAppearance.Amino.LabelMedium</item>

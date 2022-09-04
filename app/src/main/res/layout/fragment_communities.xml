@@ -4,23 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="ltr"
     tools:context=".fragments.home.CommunitiesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/spacing_huge"
+        android:layout_marginTop="@dimen/spacing_huge"
+        android:layout_marginEnd="@dimen/spacing_huge"
+        android:layout_marginBottom="@dimen/spacing_small">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
-
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+
             android:text="@string/my_communities"
-            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.Amino.TitleLarge"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,15 +30,10 @@
             android:id="@+id/community_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="@dimen/spacing_huge"
             android:numColumns="3"
-            android:verticalSpacing="10dp">
+            android:verticalSpacing="10dp"/>
 
-        </GridView>
     </LinearLayout>
-
 
 </FrameLayout>

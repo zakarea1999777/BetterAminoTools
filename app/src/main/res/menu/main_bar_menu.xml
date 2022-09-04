@@ -4,13 +4,13 @@
         android:id="@+id/profile"
         android:enabled="true"
         android:icon="@drawable/user"
-        android:title="@string/profile"/>
+        android:title="@string/profile" />
 
     <item
         android:id="@+id/communities"
         android:enabled="true"
         android:icon="@drawable/communities"
-        android:title="@string/communities"/>
+        android:title="@string/communities" />
 
     <!--
         Soon:

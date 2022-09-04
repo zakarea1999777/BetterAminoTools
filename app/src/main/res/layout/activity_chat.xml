@@ -8,23 +8,23 @@
     tools:context=".activities.ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messageList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/messageList"
-        android:layout_alignParentTop="true"
+        android:layout_above="@id/messageBox"
         android:layout_alignParentStart="true"
-        android:dividerHeight="0dp"
+        android:layout_alignParentTop="true"
         android:divider="@null"
-        android:layout_above="@id/messageBox" />
+        android:dividerHeight="0dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/messageBox"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_alignParentBottom="true"
-        app:endIconMode="custom"
-        app:endIconDrawable="@drawable/send">
+        app:endIconDrawable="@drawable/send"
+        app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/messageText"

@@ -3,12 +3,7 @@
     <item>
         <shape android:shape="rectangle">
             <corners android:radius="500dp" />
-            <stroke
-                android:width="2dp"
-                android:dashWidth="15dp"
-                android:color="?attr/colorControlNormal"
-                android:dashGap="3dp"
-                />
+            <stroke android:width="2dp" android:color="?attr/colorControlNormal" android:dashWidth="15dp" android:dashGap="3dp" />
         </shape>
     </item>
 </selector>
