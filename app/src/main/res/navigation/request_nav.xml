@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_nav"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.better.amino.fragments.requests.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
+
+    <fragment
+        android:id="@+id/responseFragment"
+        android:name="com.better.amino.fragments.requests.ResponseFragment"
+        android:label="fragment_response"
+        tools:layout="@layout/fragment_response" />
+
+</navigation>

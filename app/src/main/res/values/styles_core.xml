@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Amino" parent="Theme.Material3.DynamicColors.DayNight">
+        <item name="colorPrimary">@color/md_theme_light_primary</item>
+        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_theme_light_secondary</item>
+        <item name="colorOnSecondary">@color/md_theme_light_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_theme_light_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_theme_light_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_theme_light_tertiary</item>
+        <item name="colorOnTertiary">@color/md_theme_light_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_theme_light_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_theme_light_onTertiaryContainer</item>
+        <item name="colorError">@color/md_theme_light_error</item>
+        <item name="colorErrorContainer">@color/md_theme_light_errorContainer</item>
+        <item name="colorOnError">@color/md_theme_light_onError</item>
+        <item name="colorOnErrorContainer">@color/md_theme_light_onErrorContainer</item>
+        <item name="android:colorBackground">@color/md_theme_light_background</item>
+        <item name="colorOnBackground">@color/md_theme_light_onBackground</item>
+        <item name="colorSurface">@color/md_theme_light_surface</item>
+        <item name="colorOnSurface">@color/md_theme_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_theme_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_theme_light_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_theme_light_outline</item>
+        <item name="colorOnSurfaceInverse">@color/md_theme_light_inverseOnSurface</item>
+        <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
+        <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
+    </style>
+
+    <style name="Theme.Amino.V23" parent="Theme.Amino" />
+
+    <style name="Theme.Amino.V27" parent="Theme.Amino.V23">
+        <item name="android:statusBarColor">@color/chrome_translucent</item>
+        <item name="android:navigationBarColor">@color/chrome_translucent</item>
+    </style>
+
+    <style name="Theme.Amino.V29" parent="Theme.Amino.V27" />
+
+    <style name="Theme.Amino.Base" parent="Theme.Amino.V29">
+        <item name="android:scrollbars">none</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorControlNormal">?attr/colorOnSurfaceVariant</item>
+        <item name="colorControlActivated">?attr/colorPrimary</item>
+        <item name="textAppearanceDisplayLarge">@style/TextAppearance.Amino.DisplayLarge</item>
+        <item name="textAppearanceDisplayMedium">@style/TextAppearance.Amino.DisplayMedium</item>
+        <item name="textAppearanceDisplaySmall">@style/TextAppearance.Amino.DisplaySmall</item>
+        <item name="textAppearanceHeadlineLarge">@style/TextAppearance.Amino.HeadlineLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextAppearance.Amino.HeadlineMedium</item>
+        <item name="textAppearanceHeadlineSmall">@style/TextAppearance.Amino.HeadlineSmall</item>
+        <item name="textAppearanceTitleLarge">@style/TextAppearance.Amino.TitleLarge</item>
+        <item name="textAppearanceTitleMedium">@style/TextAppearance.Amino.TitleMediumLowEmphasis
+        </item>
+        <item name="textAppearanceTitleSmall">@style/TextAppearance.Amino.TitleSmall</item>
+        <item name="textAppearanceLabelLarge">@style/TextAppearance.Amino.LabelLarge</item>
+        <item name="textAppearanceLabelMedium">@style/TextAppearance.Amino.LabelMedium</item>
+        <item name="textAppearanceLabelSmall">@style/TextAppearance.Amino.LabelSmall</item>
+        <item name="textAppearanceBodyLarge">@style/TextAppearance.Amino.BodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextAppearance.Amino.BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/TextAppearance.Amino.BodySmall</item>
+    </style>
+
+    <style name="Theme.Amino.App" parent="Theme.Amino.Base" />
+
+    <style name="roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+</resources>
