@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.better.amino.R;
 import com.better.amino.adapters.RequestVPAdapter;
 import com.better.amino.databinding.ActivityRequestBinding;
-import com.better.amino.requests.RequestNetwork;
+import com.better.amino.requests.DevelopersRequestNetwork;
 import com.better.amino.utils.FileUtils;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.tabs.TabLayout;
@@ -43,6 +43,8 @@ public class RequestActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
         topAppBar = findViewById(R.id.topAppBar);
+
+        DevelopersRequestNetwork.context = this;
 
         Intent intent = getIntent();
 
@@ -98,12 +100,12 @@ public class RequestActivity extends AppCompatActivity {
                             for (Map<String, Object> dataItem : (ArrayList<Map<String, Object>>) req.get("data")) {
                                 requestData.put(dataItem.get("key").toString(), dataItem.get("value").toString());
                             }
-                            response = RequestNetwork.post(req.get("url").toString(), requestData);
+                            response = DevelopersRequestNetwork.post(req.get("url").toString(), requestData);
                             break;
                         case "GET":
-                            response = RequestNetwork.get(req.get("url").toString());
+                            response = DevelopersRequestNetwork.get(req.get("url").toString());
                         case "DELETE":
-                            response = RequestNetwork.delete(req.get("url").toString());
+                            response = DevelopersRequestNetwork.delete(req.get("url").toString());
                     }
 
                     viewPager.setAdapter(requestVPAdapter);

@@ -19,7 +19,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 
-public class RequestNetwork {
+public class DevelopersRequestNetwork {
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
     public static final MediaType MEDIA_TYPE_JPG = MediaType.parse("application/octet-stream");
@@ -62,10 +62,10 @@ public class RequestNetwork {
                     break;
                 case 270:
                     IntentManager.goToUrl(context, responseBody.get("url").toString());
-                    return null;
+                    return responseBody;
                 default:
                     ToastManager.makeToast(context, apimessage);
-                    return null;
+                    return responseBody;
             }
         } catch (IOException | InterruptedException | ExecutionException |
                  IllegalStateException ignored) {
@@ -103,7 +103,7 @@ public class RequestNetwork {
 
             if (statuscode != 0) {
                 ToastManager.makeToast(context, "Failed to Upload Image: " + apimessage);
-                return null;
+                return responseBody;
             }
         } catch (IOException | InterruptedException | ExecutionException |
                  IllegalStateException e) {
@@ -148,10 +148,10 @@ public class RequestNetwork {
                     break;
                 case 105:
                     ToastManager.makeToast(context, "Session is Expired");
-                    return null;
+                    return responseBody;
                 default:
                     ToastManager.makeToast(context, apimessage);
-                    return null;
+                    return responseBody;
             }
         } catch (IOException | InterruptedException | ExecutionException |
                  IllegalStateException ignored) {
@@ -188,7 +188,7 @@ public class RequestNetwork {
 
             if (statuscode != 0) {
                 ToastManager.makeToast(context, apimessage);
-                return null;
+                return responseBody;
             }
         } catch (IOException | InterruptedException | ExecutionException |
                  IllegalStateException ignored) {

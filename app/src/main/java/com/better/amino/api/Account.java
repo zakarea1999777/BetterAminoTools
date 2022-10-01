@@ -33,6 +33,7 @@ public class Account {
 
     public Account(Activity context) {
         this.context = context;
+        RequestNetwork.context = context;
     }
 
     public boolean isLogged() {
