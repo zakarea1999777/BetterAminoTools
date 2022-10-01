@@ -32,7 +32,8 @@ If you have any questions, ideas, need help or want to propose a change just ope
 
 - \[x] Text Chatting
 - \[x] Editing Global Profile
-- \[x] Show community chats
+- \[x] Show Community Chats
+- \[x] Send Requests Manager
 - \[ \] Leave/Join Community 
 - \[ \] Leave/Join Chats 
 - \[ \] Sneding Images/Voices/Embeds/Videos/YtVideos
