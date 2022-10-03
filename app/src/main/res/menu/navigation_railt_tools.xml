@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fake_coins"
+        android:enabled="true"
+        android:icon="@drawable/coin"
+        android:title="Fake Coins" />
+    <item
+        android:id="@+id/msg_type"
+        android:enabled="true"
+        android:icon="@drawable/type"
+        android:title="Message Type" />
+
+    <!--
+    <item
+        android:id="@+id/guidelines_item"
+        android:enabled="true"
+        android:icon="@drawable/embed"
+        android:title="@string/guidelines" />
+    -->
+
+</menu>

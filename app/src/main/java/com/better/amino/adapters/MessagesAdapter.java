@@ -83,15 +83,18 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.ViewHo
         }
     }
 
-    // total number of rows
     @Override
     public int getItemCount() {
         return mData.size();
     }
 
     // convenience method for getting data at click position
-    Map<String, Object> getItem(int id) {
+    public Map<String, Object> getItem(int id) {
         return mData.get(id);
+    }
+
+    public ArrayList<Map<String, Object>> getData() {
+        return this.mData;
     }
 
     // allows clicks events to be caught
