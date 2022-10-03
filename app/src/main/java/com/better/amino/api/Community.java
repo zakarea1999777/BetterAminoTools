@@ -11,6 +11,7 @@ import com.better.amino.ui.ToastManager;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class Community {
     private static String community;
@@ -18,7 +19,9 @@ public class Community {
     /* Community Related EndPoints */
     private static String chat;
     private static String getchats;
+    private static String getmsgs;
     private static String sendmsg;
+    private static String sendcoins;
     private static String leavecom;
     private static String joincom;
     private static String leavechat;
@@ -34,7 +37,9 @@ public class Community {
         }
         chat = "/s/chat/thread/" + ChatUtils.chatId;
         getchats = community + "/s/chat/thread?type=joined-me&start=0&size=100";
+        getmsgs = community + chat + "/message?v=2&pagingType=t&size=100";
         sendmsg = community + chat + "/message";
+        sendcoins = community + chat + "/tipping";
         leavecom = community + "/s/community/leave";
         joincom = community + "/s/community/join";
         leavechat = community + chat + "/member/" + AccountUtils.uid;
@@ -49,11 +54,36 @@ public class Community {
         }
     }
 
-    public boolean SendMessage(String message) {
+    public ArrayList<Map<String, Object>> getMessages() {
+        Map<String, Object> map = RequestNetwork.get(getmsgs);
+        if (map != null) {
+            return (ArrayList<Map<String, Object>>) map.get("messageList");
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    public boolean SendMessage(String message, int msgType) {
         Map<String, Object> data = new HashMap<>();
         data.put("content", message);
-        data.put("type", 0);
+        data.put("type", msgType);
         Map<String, Object> map = RequestNetwork.post(sendmsg, data);
+        return map != null;
+    }
+
+    public boolean SendCoins(int coins, String uid) {
+        Map<String, Object> data = new HashMap<>();
+        Map<String, Object> tippingContext = new HashMap<>();
+
+        if (uid == null) {
+            uid = UUID.randomUUID().toString();
+        }
+        tippingContext.put("transactionId", uid);
+
+        data.put("coins", coins);
+        data.put("tippingContext", tippingContext);
+
+        Map<String, Object> map = RequestNetwork.post(sendcoins, data);
         return map != null;
     }
 
