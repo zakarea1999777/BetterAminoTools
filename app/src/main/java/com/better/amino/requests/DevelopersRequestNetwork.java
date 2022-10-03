@@ -2,6 +2,7 @@ package com.better.amino.requests;
 
 import android.app.Activity;
 
+import com.better.amino.R;
 import com.better.amino.ui.IntentManager;
 import com.better.amino.ui.ToastManager;
 import com.better.amino.utils.Headers;
@@ -147,7 +148,7 @@ public class DevelopersRequestNetwork {
                 case 0:
                     break;
                 case 105:
-                    ToastManager.makeToast(context, "Session is Expired");
+                    ToastManager.makeToast(context, context.getString(R.string.session_expired));
                     return responseBody;
                 default:
                     ToastManager.makeToast(context, apimessage);

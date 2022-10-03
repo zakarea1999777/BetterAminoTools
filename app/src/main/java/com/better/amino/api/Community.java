@@ -10,6 +10,7 @@ import com.better.amino.ui.ToastManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -20,11 +21,13 @@ public class Community {
     private static String chat;
     private static String getchats;
     private static String getmsgs;
+    private static String getonline;
     private static String sendmsg;
     private static String sendcoins;
     private static String leavecom;
     private static String joincom;
     private static String leavechat;
+    private static String invite;
     final Activity context;
 
     // TODO: Complete Those Later
@@ -38,11 +41,13 @@ public class Community {
         chat = "/s/chat/thread/" + ChatUtils.chatId;
         getchats = community + "/s/chat/thread?type=joined-me&start=0&size=100";
         getmsgs = community + chat + "/message?v=2&pagingType=t&size=100";
+        getonline = community + "/s/live-layer?topic=ndtopic:x%1$s:online-members&start=%2$s&size=%3$s";
         sendmsg = community + chat + "/message";
         sendcoins = community + chat + "/tipping";
         leavecom = community + "/s/community/leave";
         joincom = community + "/s/community/join";
         leavechat = community + chat + "/member/" + AccountUtils.uid;
+        invite = community + chat + "/member/invite";
     }
 
     public ArrayList<Map<String, Object>> getChats() {
@@ -58,6 +63,15 @@ public class Community {
         Map<String, Object> map = RequestNetwork.get(getmsgs);
         if (map != null) {
             return (ArrayList<Map<String, Object>>) map.get("messageList");
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    public ArrayList<Map<String, Object>> getOnlineMembers(int start, int size) {
+        Map<String, Object> map = RequestNetwork.get(String.format(getonline, ((Double) CommunityUtils.community.get("ndcId")).intValue(), start, size));
+        if (map != null) {
+            return (ArrayList<Map<String, Object>>) map.get("userProfileList");
         } else {
             return new ArrayList<>();
         }
@@ -84,6 +98,14 @@ public class Community {
         data.put("tippingContext", tippingContext);
 
         Map<String, Object> map = RequestNetwork.post(sendcoins, data);
+        return map != null;
+    }
+
+    public boolean Invite(String[] uids) {
+        Map<String, Object> data = new HashMap<>();
+        data.put("uids", uids);
+
+        Map<String, Object> map = RequestNetwork.post(invite, data);
         return map != null;
     }
 

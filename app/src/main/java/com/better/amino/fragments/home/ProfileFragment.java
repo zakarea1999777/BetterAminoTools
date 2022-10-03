@@ -15,13 +15,16 @@ import androidx.core.app.ActivityOptionsCompat;
 import androidx.fragment.app.Fragment;
 
 import com.better.amino.R;
+import com.better.amino.activities.MainActivity;
 import com.better.amino.api.Global;
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.ui.AnimationManager;
+import com.better.amino.ui.SharedValue;
 import com.better.amino.utils.FileUtils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.dd.CircularProgressButton;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.File;
@@ -58,6 +61,7 @@ public class ProfileFragment extends Fragment {
                     }
                 }
             });
+    MaterialButton logout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -67,6 +71,8 @@ public class ProfileFragment extends Fragment {
         bio = view.findViewById(R.id.bio);
         set = view.findViewById(R.id.set_btn);
         camera = view.findViewById(R.id.camera_icon);
+        logout = view.findViewById(R.id.logout);
+        SharedValue shared = new SharedValue(requireActivity());
 
         RequestOptions options = new RequestOptions().centerCrop().placeholder(R.mipmap.ic_launcher_round).error(R.mipmap.ic_launcher_round);
 
@@ -93,6 +99,16 @@ public class ProfileFragment extends Fragment {
         });
 
         icon.setOnClickListener(vie -> profileFragmentResultLauncher.launch(new Intent(Intent.ACTION_PICK).setType("image/*"), ActivityOptionsCompat.makeBasic()));
+
+        logout.setOnClickListener(vie -> {
+            shared.removeValue("logged");
+            requireContext().startActivity(new Intent(requireContext(), MainActivity.class));
+            try {
+                requireActivity().finishAffinity();
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         return view;
     }

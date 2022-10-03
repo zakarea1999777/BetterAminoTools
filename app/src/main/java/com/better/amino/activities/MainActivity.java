@@ -4,11 +4,14 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
+
 import com.better.amino.R;
 import com.better.amino.api.Account;
 import com.better.amino.api.utils.AccountUtils;
 import com.better.amino.ui.SharedValue;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class MainActivity extends Activity {
@@ -21,6 +24,17 @@ public class MainActivity extends Activity {
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(this);
+        AlertDialog alertDialog = materialAlertDialogBuilder.create();
+        materialAlertDialogBuilder.setTitle("Disclaimer!");
+        materialAlertDialogBuilder.setMessage("Inviting the online members will cause you a ban from the community, and if you point the finger at me for messing up your chat, I will laugh at you.");
+        materialAlertDialogBuilder.setNegativeButton("Decline", (dialog, which) -> {
+            alertDialog.dismiss();
+            finish();
+        });
+        materialAlertDialogBuilder.setPositiveButton("Accept", (dialog, which) -> {
+        });
 
         Account account = new Account(this);
         SharedValue shared = new SharedValue(this);

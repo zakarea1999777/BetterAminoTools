@@ -3,11 +3,13 @@ package com.better.amino.activities;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.text.InputType;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.WorkerThread;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,7 +23,9 @@ import com.better.amino.api.ws.MessageListener;
 import com.better.amino.ui.ToastManager;
 import com.better.amino.utils.Headers;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.navigationrail.NavigationRailView;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -43,6 +47,7 @@ public class ChatActivity extends AppCompatActivity {
     private int msgType = 0;
     private Dialog sendCoinsDialog;
     private MessagesAdapter adapter;
+    private LinearProgressIndicator progressIndicator;
 
 
     @Override
@@ -54,6 +59,7 @@ public class ChatActivity extends AppCompatActivity {
         messageText = findViewById(R.id.messageText);
         railNavView = findViewById(R.id.navigation_rail);
         listView = findViewById(R.id.messageList);
+        progressIndicator = findViewById(R.id.progressBar);
         community = new Community(this);
         listView.setAdapter(adapter);
         getChatMessages();
@@ -64,12 +70,15 @@ public class ChatActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.fake_coins:
-                    showSendCoinsDialog();
+                    new Thread(() -> runOnUiThread(this::showSendCoinsDialog)).start();
                     break;
 
                 case R.id.msg_type:
-                    showMessageTypesPopup();
+                    new Thread(() -> runOnUiThread(this::showMessageTypesPopup)).start();
                     break;
+
+                case R.id.invite_online:
+                    new Thread(() -> runOnUiThread(this::inviteOnlineMembersToChat)).start();
             }
 
             return true;
@@ -84,6 +93,39 @@ public class ChatActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void inviteOnlineMembersToChat() {
+        MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(this);
+        AlertDialog alertDialog = materialAlertDialogBuilder.create();
+        materialAlertDialogBuilder.setTitle(R.string.disclaimer);
+        materialAlertDialogBuilder.setMessage(R.string.invite_disclaimer_message);
+        materialAlertDialogBuilder.setNegativeButton(R.string.decline, (dialog, which) -> {
+            alertDialog.dismiss();
+        });
+        materialAlertDialogBuilder.setPositiveButton(R.string.accept, (dialog, which) -> {
+            int start = 0;
+            progressIndicator.setVisibility(View.VISIBLE);
+            for (int _repeat = 0; _repeat < 20; _repeat++) {
+                ArrayList<Map<String, Object>> users = community.getOnlineMembers(start, 100);
+
+                if (users.size() == 0) {
+                    progressIndicator.setVisibility(View.GONE);
+                    return;
+                }
+
+
+                for (Map<String, Object> user : users) {
+                    String[] uid = new String[]{user.get("uid").toString()};
+                    community.Invite(uid);
+                    progressIndicator.setMax(user.size());
+                    progressIndicator.setProgress(_repeat + 1);
+                }
+
+                start = start + 100;
+            }
+        });
+        materialAlertDialogBuilder.show();
     }
 
     public void getChatMessages() {
@@ -138,21 +180,20 @@ public class ChatActivity extends AppCompatActivity {
             TextInputLayout inputLayout = sendCoinsDialog.findViewById(R.id.til_project_name);
             Button cancelBtn = sendCoinsDialog.findViewById(android.R.id.button2);
             Button createBtn = sendCoinsDialog.findViewById(android.R.id.button1);
-            createBtn.setText("Send");
-            title.setText("Send Coins");
-            inputLayout.setHint("Coins Count");
+            createBtn.setText(R.string.send);
+            title.setText(R.string.send_coins);
+            inputLayout.setHint(R.string.coins_count);
             input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
             cancelBtn.setOnClickListener(v -> sendCoinsDialog.dismiss());
-            createBtn.setOnClickListener(
-                    v -> {
-                        if (community.SendCoins(1, AccountUtils.uid)) {
-                            if (community.SendCoins(Integer.parseInt(input.getText().toString()), AccountUtils.uid)) {
-                                ToastManager.makeToast(this, "Coins Sent Successfully");
-                            }
-                        }
-                        sendCoinsDialog.dismiss();
-                    });
+            createBtn.setOnClickListener(v -> {
+                if (community.SendCoins(1, AccountUtils.uid)) {
+                    if (community.SendCoins(Integer.parseInt(input.getText().toString()), AccountUtils.uid)) {
+                        ToastManager.makeToast(this, getString(R.string.coins_sent));
+                    }
+                }
+                sendCoinsDialog.dismiss();
+            });
 
             input.setText("");
         }
