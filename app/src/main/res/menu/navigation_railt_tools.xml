@@ -4,19 +4,17 @@
         android:id="@+id/fake_coins"
         android:enabled="true"
         android:icon="@drawable/coin"
-        android:title="Fake Coins" />
+        android:title="@string/fake_coins" />
     <item
         android:id="@+id/msg_type"
         android:enabled="true"
         android:icon="@drawable/type"
-        android:title="Message Type" />
+        android:title="@string/message_type" />
 
-    <!--
     <item
-        android:id="@+id/guidelines_item"
+        android:id="@+id/invite_online"
         android:enabled="true"
-        android:icon="@drawable/embed"
-        android:title="@string/guidelines" />
-    -->
+        android:icon="@drawable/invite"
+        android:title="@string/invite_online" />
 
 </menu>

@@ -71,6 +71,16 @@
             app:cpb_textError="Error"
             app:cpb_textIdle="Set" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/logout"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            android:text="@string/logout"
+            android:textColor="@color/cpb_red"
+            app:cornerRadius="5dp" />
+
     </LinearLayout>
 
     <de.hdodenhof.circleimageview.CircleImageView
