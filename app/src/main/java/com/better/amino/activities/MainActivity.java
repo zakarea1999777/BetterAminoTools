@@ -35,7 +35,8 @@ public class MainActivity extends Activity {
         });
         materialAlertDialogBuilder.setPositiveButton(R.string.accept, (dialog, which) -> {
         });
-
+        materialAlertDialogBuilder.show();
+        
         Account account = new Account(this);
         SharedValue shared = new SharedValue(this);
 
