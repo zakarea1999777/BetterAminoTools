@@ -11,6 +11,7 @@
     <string name="leave_chat_description">Are you sure you want to leave this chat?</string>
     <string name="disclaimer">Disclaimer!</string>
     <string name="invite_disclaimer_message">Inviting the online members may cause you a ban from the community, and if you point the finger at me for messing up your chat, I will laugh at you.</string>
+    <string name="disclaimer_message">Your use of the application may cause you to be banned from a community or kicked out, so try not to share images from the application. And if you point the finger at me for kicking you out of your conversation or account or banning you from a community where you have a high level, I will laugh at you.</string>
     <string name="decline">Decline</string>
     <string name="accept">Accept</string>
 
