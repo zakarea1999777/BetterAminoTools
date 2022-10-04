@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_world">مرحبا بالعالم!</string>
+
+    <!-- Strings used by dialogs -->
+    <string name="warning">تحذير!</string>
+    <string name="leave_community_description">إذا غادرت هذا المنتدى ، فستتوقف الاشتراكات المرتبطة به. هل أنت متأكد أنك تريد مغادرة هذا المنتدى؟</string>
+    <string name="cancel">إلغاء</string>
+    <string name="leave">مغادرة</string>
+    <string name="leave_chat_description">هل أنت متأكد أنك تريد مغادرة هذه الدردشة؟</string>
+    <string name="disclaimer">إخلاء المسؤولية!</string>
+    <string name="invite_disclaimer_message">قد تتسبب دعوة الأعضاء الاونلاين في حظرك من المنتدى ، وإذا وجهت أصابع الاتهام إلي لإفساد محادثتك او حسابك ، سوف أضحك عليك.</string>
+    <string name="disclaimer_message">قد يتسبب إستخدامك للتطبيق في حظرك من منتدى او طردك ، لذا حاول أن لا تشارك صور من داخل التطبيق . وإذا وجهت أصابع الاتهام إلي لطردك من محادثتك او حسابك او حظرك من منتدى مستواك فيه عالي ، سوف</string>
+    <string name="decline">رفض</string>
+    <string name="accept">قبول</string>
+    
+
+    <!-- Strings used by MainActivity -->
+    <string name="email">البريد الإلكتروني</string>
+    <string name="password">كلمة المرور</string>
+    <string name="forget_password">نسيت كلمة المرور؟</string>
+    <string name="login">تسجيل الدخول</string>
+
+    <!-- Strings used by MainBarMenu, NavigationRailMenu -->
+    <string name="communities">المنتديات</string>
+    <string name="profile">البروفايل</string>
+    <string name="chats">الدردشات</string>
+    <string name="explore">تصفح</string>
+    <string name="home">الرئيسية</string>
+    <string name="guidelines">القواعد</string>
+
+    <!-- Strings used by ProfileFragment -->
+    <string name="set">تعيين</string>
+    <string name="bio">السيرة</string>
+    <string name="nickname">الإسم</string>
+    <string name="logout">تسجيل الخروج</string>
+
+    <!-- Strings used by CommunitiesFragment -->
+    <string name="my_communities">منتدياتي</string>
+
+    <!-- Strings used by DeveloperFragment -->
+    <string name="no_projects_title">لم يتم العثور على طلبات</string>
+    <string name="no_projects_suggestion">قم بإنشاء طلب بالضغط على الزر أدناه</string>
+    <string name="projects">الطلبات</string>
+    <string name="new_project">طلب جديد</string>
+    <string name="delete_project">حذف الطلب</string>
+    <string name="project_name">إسم الطلب</string>
+    <string name="project_delete_warning">هل تريد حذف %1$s؟</string>
+    <string name="delete">حذق</string>
+    <string name="package_name">إسم الحزمة</string>
+
+    <!-- Strings used by CommunityHomeFragment -->
+    <string name="blogs">المدونات</string>
+
+    <!-- Strings used by CommunityChatsFragment -->
+    <string name="private_chat">دردشة خاصة</string>
+
+    <!-- Strings used by ChatActivity -->
+    <string name="message">رسالة</string>
+    <string name="fake_coins">قروش وهمية</string>
+    <string name="message_type">انواع الرسالة</string>
+    <string name="invite_online">دعوة الاونلاين</string>
+    <string name="new_messages">رسائل جديدة</string>
+    <string name="new_messages_title">الذهاب للرسالة</string>
+    <string name="send_coins">إرسالة القروش</string>
+    <string name="coins_count">عدد القروش</string>
+    <string name="coins_sent">تم إرسال القروش بنجاح</string>
+
+    <!-- Strings used by SearchCommunityActivity -->
+    <string name="search_about_communities">البحث عن منتديات</string>
+    <string name="search">بحث</string>
+
+    <!-- Strings used by RequestActivity -->
+    <string name="developers">المطورين</string>
+    <string name="send">إرسال</string>
+    <string name="method">الصيغة</string>
+    <string name="post">POST</string>
+    <string name="path"><![CDATA[/<ndcId>/s/community/join?<uid>]]></string>
+    <string name="request">الطلب</string>
+    <string name="response">الإجابة</string>
+    <string name="title_activity_request">مدير الطلبات</string>
+    <string name="create">إنشاء</string>
+
+    <!-- Strings used in RequestFragment -->
+    <string name="data_type">نوع البيانات</string>
+    <string name="json">JSON String</string>
+
+    <!-- Strings used in RequestsNetwork -->
+    <string name="session_expired">انتهت صلاحية الجلسة (sid)</string>
+
+    <!-- String Arrays -->
+    <string-array name="methods">
+        <item>POST</item>
+        <item>GET</item>
+        <item>DELETE</item>
+    </string-array>
+
+    <string-array name="data_types">
+        <item>JSON</item>
+        <item>JSON String</item>
+    </string-array>
+
+</resources>

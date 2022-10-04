@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Amino</string>
+    <string name="app_name" translatable="false">Better Amino</string>
     <string name="hello_world">Hello World</string>
 
     <!-- Strings used by dialogs -->
@@ -9,12 +9,16 @@
     <string name="cancel">Cancel</string>
     <string name="leave">Leave</string>
     <string name="leave_chat_description">Are you sure you want to leave this chat?</string>
+    <string name="disclaimer">Disclaimer!</string>
+    <string name="invite_disclaimer_message">Inviting the online members may cause you a ban from the community, and if you point the finger at me for messing up your chat, I will laugh at you.</string>
+    <string name="disclaimer_message">Your use of the application may cause you to be banned from a community or kicked out, so try not to share images from the application. And if you point the finger at me for kicking you out of your conversation or account or banning you from a community where you have a high level, I will laugh at you.</string>
+    <string name="decline">Decline</string>
+    <string name="accept">Accept</string>
 
     <!-- Strings used by MainActivity -->
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="forget_password">Forget Password?</string>
-    <string name="login_with_google">Login With Google</string>
     <string name="login">Login</string>
 
     <!-- Strings used by MainBarMenu, NavigationRailMenu -->
@@ -29,6 +33,7 @@
     <string name="set">Set</string>
     <string name="bio">Bio</string>
     <string name="nickname">Nickname</string>
+    <string name="logout">Logout</string>
 
     <!-- Strings used by CommunitiesFragment -->
     <string name="my_communities">My Communities</string>
@@ -52,6 +57,14 @@
 
     <!-- Strings used by ChatActivity -->
     <string name="message">Message</string>
+    <string name="fake_coins">Fake Coins</string>
+    <string name="message_type">Message Type</string>
+    <string name="invite_online">Invite Online</string>
+    <string name="new_messages">New Messages</string>
+    <string name="new_messages_title">Go To Message</string>
+    <string name="send_coins">Send Coins</string>
+    <string name="coins_count">Coins Count</string>
+    <string name="coins_sent">Coins Sent Successfully</string>
 
     <!-- Strings used by SearchCommunityActivity -->
     <string name="search_about_communities">Search About Communities</string>
@@ -71,6 +84,9 @@
     <!-- Strings used in RequestFragment -->
     <string name="data_type">Data Type</string>
     <string name="json">JSON String</string>
+
+    <!-- Strings used in RequestsNetwork -->
+    <string name="session_expired">Session is Expired</string>
 
     <!-- String Arrays -->
     <string-array name="methods">

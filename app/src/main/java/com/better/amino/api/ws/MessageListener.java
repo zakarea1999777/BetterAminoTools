@@ -13,11 +13,9 @@ import com.better.amino.adapters.MessagesAdapter;
 import com.better.amino.api.utils.ChatUtils;
 import com.better.amino.utils.Headers;
 import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.OkHttpClient;
@@ -52,33 +50,30 @@ public class MessageListener extends WebSocketListener {
         }.getType());
 
         activity.runOnUiThread(() -> {
-            Map<String, Object> chatMessage = new HashMap<>();
+            Map<String, Object> chatMessage;
             if (((Double) json.get("t")).intValue() == CHAT_MESSAGES) {
                 chatMessage = ((Map<String, Object>) ((Map<String, Object>) json.get("o")).get("chatMessage"));
                 String threadId = chatMessage.get("threadId").toString();
 
                 if (threadId.equals(ChatUtils.chatId)) {
+
+                    LinearLayoutManager layoutManager = (LinearLayoutManager) listView.getLayoutManager();
+                    int currentItem = layoutManager.findLastVisibleItemPosition();
+                    adapter.add(chatMessage);
+
+                    if (currentItem == adapter.getItemCount() - 2 || currentItem == adapter.getItemCount() - 3) {
+                        listView.scrollToPosition(adapter.getItemCount() - 1);
+                    } else {
+                        View view = activity.findViewById(R.id.messageBox);
+                        Snackbar.make(view, "New Messages", Snackbar.LENGTH_INDEFINITE)
+                                .setAction("Go To Message", view1 -> listView.scrollToPosition(adapter.getItemCount() - 1))
+                                .setAnchorView(view)
+                                .show();
+                    }
+
+                    listView.setItemAnimator(null);
                 }
             }
-            Map<String, Object> finalChatMessage = chatMessage;
-
-            //new Handler().postDelayed((Runnable) () -> {
-            LinearLayoutManager layoutManager = (LinearLayoutManager) listView.getLayoutManager();
-            int currentItem = layoutManager.findLastVisibleItemPosition();
-            adapter.add(finalChatMessage);
-
-            if (currentItem == adapter.getItemCount() - 2) {
-                listView.scrollToPosition(adapter.getItemCount() - 1);
-            } else {
-                View view = activity.findViewById(R.id.messageBox);
-                TextInputLayout messageBox = activity.findViewById(R.id.messageBox);
-                Snackbar.make(view, "New Messages", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Go To Message", view1 -> listView.scrollToPosition(adapter.getItemCount() - 1))
-                        .setAnchorView(messageBox)
-                        .show();
-            }
-
-            listView.setItemAnimator(null);
         });
     }
 
