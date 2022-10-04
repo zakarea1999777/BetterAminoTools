@@ -27,13 +27,13 @@ public class MainActivity extends Activity {
 
         MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(this);
         AlertDialog alertDialog = materialAlertDialogBuilder.create();
-        materialAlertDialogBuilder.setTitle("Disclaimer!");
-        materialAlertDialogBuilder.setMessage("Inviting the online members will cause you a ban from the community, and if you point the finger at me for messing up your chat, I will laugh at you.");
-        materialAlertDialogBuilder.setNegativeButton("Decline", (dialog, which) -> {
+        materialAlertDialogBuilder.setTitle((R.string.disclaimer);
+        materialAlertDialogBuilder.setMessage(R.string.disclaimer_message);
+        materialAlertDialogBuilder.setNegativeButton(R.string.decline, (dialog, which) -> {
             alertDialog.dismiss();
             finish();
         });
-        materialAlertDialogBuilder.setPositiveButton("Accept", (dialog, which) -> {
+        materialAlertDialogBuilder.setPositiveButton(R.string.accept, (dialog, which) -> {
         });
 
         Account account = new Account(this);
