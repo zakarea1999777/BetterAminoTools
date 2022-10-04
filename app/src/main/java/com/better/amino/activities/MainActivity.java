@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 
         MaterialAlertDialogBuilder materialAlertDialogBuilder = new MaterialAlertDialogBuilder(this);
         AlertDialog alertDialog = materialAlertDialogBuilder.create();
-        materialAlertDialogBuilder.setTitle((R.string.disclaimer);
+        materialAlertDialogBuilder.setTitle(R.string.disclaimer);
         materialAlertDialogBuilder.setMessage(R.string.disclaimer_message);
         materialAlertDialogBuilder.setNegativeButton(R.string.decline, (dialog, which) -> {
             alertDialog.dismiss();
