@@ -10,8 +10,10 @@
     <string name="leave_chat_description">هل أنت متأكد أنك تريد مغادرة هذه الدردشة؟</string>
     <string name="disclaimer">إخلاء المسؤولية!</string>
     <string name="invite_disclaimer_message">قد تتسبب دعوة الأعضاء الاونلاين في حظرك من المنتدى ، وإذا وجهت أصابع الاتهام إلي لإفساد محادثتك او حسابك ، سوف أضحك عليك.</string>
+    <string name="disclaimer_message">قد يتسبب إستخدامك للتطبيق في حظرك من منتدى او طردك ، لذا حاول أن لا تشارك صور من داخل التطبيق . وإذا وجهت أصابع الاتهام إلي لطردك من محادثتك او حسابك او حظرك من منتدى مستواك فيه عالي ، سوف</string>
     <string name="decline">رفض</string>
     <string name="accept">قبول</string>
+    
 
     <!-- Strings used by MainActivity -->
     <string name="email">البريد الإلكتروني</string>
