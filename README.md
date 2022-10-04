@@ -34,14 +34,14 @@ If you have any questions, ideas, need help or want to propose a change just ope
 - \[x] Editing Global Profile
 - \[x] Show Community Chats
 - \[x] Request Network Manager
-- \[ \] Leave/Join Community 
-- \[ \] Leave/Join Chats 
+- \[x] Leave/Join Community 
+- \[x] Leave/Join Chats 
 - \[ \] Sneding Images/Voices/Embeds/Videos/YtVideos
 - \[ \] Managing Chats
 - \[ \] Edit Community Profile
 - \[ \] Show Community Blogs
 - \[ \] Comment
 - \[ \] Show Community Guidelines
-- \[ \] Sending Coins
-- \[ \] Get Chat Message History
+- \[x] Sending Coins
+- \[x] Get Chat Message History
 - \[ \] Spam Protection
